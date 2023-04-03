@@ -1,5 +1,5 @@
 
-
+// ---------------------------- klasser och stat generatorer--------------------------------------------//
 
 function statgen(a, b){
     return(Math.round(Math.random()*b+a))
@@ -35,40 +35,44 @@ class Monster{
       //  return f"Du stöter på en {self.m_namn}, den har {self.m_hp} hp och {self.m_str} styrka"
 }
 
-def monstrgenerator_fas1():
-    monster = random.randint(1, 2)
-    Slime = Monster(health(4, 11), damage(2, 6), "Slime")
-    Goblin = Monster(health(3, 7), damage(3, 8), "Goblin")
-    if monster == 1:
-        monster_stats = (Slime)
-        return (monster_stats)
-    elif monster == 2:
+function monstrgenerator(){
+    monster = Math.round(Math.random())
+    if (Karaktärer.p_lvl < 10){
+        let Slime = new Monster(statgen(4, 11), statgen(2, 6), "Slime")
+        let Goblin = new Monster(statgen(3, 7), statgen(3, 8), "Goblin")
+        if (monster == 1){
+        monster_stats = (Slime);
+        return (monster_stats);
+        }
+        else if (monster == 2){
         monster_stats = (Goblin)
         return (monster_stats)
-
-
-def monstrgenerator_fas2():
-    monster = random.randint(1, 2)
-    Lycan = Monster(health(6, 12), damage(4, 9), "Lycan")
-    Golem = Monster(health(12, 17), damage(3,3), "Golem")
-    if monster == 1:
-        monster_stats = (Lycan)
-        return (monster_stats)
-    elif monster == 2:
+        }
+    }
+    else if (Karaktärer.p_lvl < 20){
+        let Lycan = new Monster(statgen(6, 12), statgen(4, 9), "Lycan")
+        let Golem = new Monster(statgen(12, 17), statgen(3,3), "Golem")  
+        if (monster == 1){
+        monster_stats = (Lycan);
+        return (monster_stats);
+        }
+        else if (monster == 2){
         monster_stats = (Golem)
         return (monster_stats)
-
-
-def monstrgenerator_fas3():
-    monster = random.randint(1, 2)
-    Undead = Monster(health(15, 22), damage(4, 5), "Undead")
-    Orc = Monster(health(9, 15), damage(6, 10), "Orc")
-    if monster == 1:
-        monster_stats = (Undead)
-        return (monster_stats)
-    elif monster == 2:
+        }
+    }
+    else (Karaktärer.p_lvl < 30);{
+        let Undead = new Monster(health(15, 22), damage(4, 5), "Undead")
+        let Orc = new Monster(health(9, 15), damage(6, 10), "Orc") 
+        if (monster == 1){
+        monster_stats = (Undead);
+        return (monster_stats);
+        }
+        else if (monster == 2){
         monster_stats = (Orc)
         return (monster_stats)
+        }
+    }
 
 
 let Start = new Vapen(0, 0, "en pinne")
@@ -77,21 +81,23 @@ let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start)
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start)
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
 
-# ---------------------------------------- SLUT  ----------------------------------------
+// ---------------------------- klasser och stat generatorer--------------------------------------------//
 
-def slut():
-    typingPrint("Game Over")
+// ---------------------------------------- SLUT  ----------------------------------------
+
+function slut(){
+    console.log("Game Over")
     quit()
+}
+// ---------------------------------------- SLUT  ----------------------------------------
 
-# ---------------------------------------- SLUT  ----------------------------------------
-
-# ---------------------------------------- lvl poäng  ----------------------------------------
+// ---------------------------------------- lvl poäng  ----------------------------------------
 
 
-def lvl_poäng(spelar_stats):
+function lvl_poäng(spelar_stats){
 
-    val = typingInput("Vilken vill du höja\n H = hp\n S = str\n")
-    if val in ["H", "h", "hp"]:
+    let val = input("Vilken vill du höja\n H = hp\n S = str\n")
+    if (val in ["H", "h", "hp"]):
         spelar_stats.p_hp += 1
         typingPrint(f"Din hp är nu {spelar_stats.p_hp}\n")
         spelar_stats.p_lvlpoäng = 0
@@ -105,10 +111,10 @@ def lvl_poäng(spelar_stats):
         typingPrint("Din sopa välj ett av alternativen\n")
         return lvl_poäng(spelar_stats)
 
+}
+// ---------------------------------------- lvl poäng  ----------------------------------------
 
-# ---------------------------------------- lvl poäng  ----------------------------------------
-
-# ---------------------------------------- FIGHT ----------------------------------------
+// ---------------------------------------- FIGHT ----------------------------------------
 
 
 def fight(spelar_stats, monster_stats):
@@ -162,9 +168,9 @@ def boss_fight(spelar_stats):
             slut()
         else:
             typingPrint("Din sopa välj ett av alternativen\n")
-# ---------------------------------------- FIGHT ----------------------------------------
+// ---------------------------------------- FIGHT ----------------------------------------
 
-# ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
+// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
 
 def kista_fas1(spelar_stats):
@@ -345,9 +351,9 @@ def fälla(spelar_stats):
         slut()
 
 
-# ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
+// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
-# ---------------------------------------- VALFUNKTIONER ----------------------------------------
+// ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
 
 def val_vanlig_fas1(spelar_stats):
@@ -494,9 +500,9 @@ def val_kista_fas3(spelar_stats):
         typingPrint("din sopa välj ett av alternativen")
         return val_kista_fas3(spelar_stats)
 
-# ---------------------------------------- VALFUNKTIONER ----------------------------------------
+// ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
-# ---------------------------------------- SPELFUNKTIONER ----------------------------------------
+// ---------------------------------------- SPELFUNKTIONER ----------------------------------------
 
 
 def karaktärsval():
@@ -553,4 +559,4 @@ def main():
 
 main()
 
-# ---------------------------------------- SPELFUNKTIONER ----------------------------------------
+// ---------------------------------------- SPELFUNKTIONER ----------------------------------------

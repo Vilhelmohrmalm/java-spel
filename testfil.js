@@ -1,25 +1,18 @@
-class Karaktärer{
-    constructor( p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen){
-    this.p_hp = p_hp;
-    this.p_str = p_str;
-    this.p_lvl = p_lvl;
-    this.p_lvlpoäng = p_lvlpoäng;
-    this.p_namn = p_namn;
-    this.vapen = vapen; }
+function lvl_poäng(spelar_stats){
+
+    let val = input("Vilken vill du höja\n H = hp\n S = str\n")
+    if (val in ["H", "h", "hp"]):
+        spelar_stats.p_hp += 1
+        typingPrint(f"Din hp är nu {spelar_stats.p_hp}\n")
+        spelar_stats.p_lvlpoäng = 0
+        return spelar_stats
+    elif val in ["S", "s", "str"]:
+        spelar_stats.p_str += 1
+        typingPrint(f"Din str är nu {spelar_stats.p_str}\n")
+        spelar_stats.p_lvlpoäng = 0
+        return spelar_stats
+    else:
+        typingPrint("Din sopa välj ett av alternativen\n")
+        return lvl_poäng(spelar_stats)
+
 }
-
-class Vapen {
-    constructor(v_namn,v_hp,v_str){
-    this.v_namn = v_namn;
-    this.v_hp = v_hp;
-    this.v_str = v_str;}
-
-}
-
-let Start = new Vapen(0, 0, "en pinne")
-
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start)
-let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start)
-let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
-
-console.log(Assasin)
