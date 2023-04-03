@@ -1,48 +1,39 @@
 
 
 
-function mstats(a, b){
-    let health = [];
-    for (i=a; a<=i<=b; i++){
-        health[health.length]=i}
-    return (random.choice(health))
+function statgen(a, b){
+    return(Math.round(Math.random()*b+a))
+    }
+
+
+
+class Vapen {
+        constructor(v_namn,v_hp,v_str){
+        this.v_namn = v_namn;
+        this.v_hp = v_hp;
+        this.v_str = v_str;}
+    
 }
 
-console.log(mstats(4,8))
 
-def damage(a, b):
-    damage = []
-    for i in range(a, b+1):
-        damage.append(i)
-    return (random.choice(damage))
+class Karaktärer{
+    constructor( p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen){
+    this.p_hp = p_hp;
+    this.p_str = p_str;
+    this.p_lvl = p_lvl;
+    this.p_lvlpoäng = p_lvlpoäng;
+    this.p_namn = p_namn;
+    this.vapen = vapen; }
+}
 
-
-class Vapen():
-    def __init__(self, v_hp, v_str, v_namn):
-        self.v_namn = v_namn
-        self.v_hp = v_hp
-        self.v_str = v_str
-
-
-class Karaktärer():
-    def __init__(self, p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen):
-        self.p_hp = p_hp
-        self.p_str = p_str
-        self.p_lvl = p_lvl
-        self.p_lvlpoäng = p_lvlpoäng
-        self.p_namn = p_namn
-        self.vapen = vapen
-
-
-class Monster():
-    def __init__(self, m_hp, m_str, m_namn):
-        self.m_namn = m_namn
-        self.m_hp = m_hp
-        self.m_str = m_str
-
-    def __str__(self):
-        return f"Du stöter på en {self.m_namn}, den har {self.m_hp} hp och {self.m_str} styrka"
-
+class Monster{
+    constructor( m_hp, m_str, m_namn){
+        this.m_namn = m_namn;
+        this.m_hp = m_hp;
+        this.m_str = m_str;}
+    //def __str__(self):
+      //  return f"Du stöter på en {self.m_namn}, den har {self.m_hp} hp och {self.m_str} styrka"
+}
 
 def monstrgenerator_fas1():
     monster = random.randint(1, 2)
@@ -80,11 +71,11 @@ def monstrgenerator_fas3():
         return (monster_stats)
 
 
-Start = Vapen(0, 0, "en pinne")
+let Start = new Vapen(0, 0, "en pinne")
 
-Assasin = Karaktärer(5, 10, 0, 0, "assasin", Start)
-Barb = Karaktärer(8, 7, 0, 0, "Barb", Start)
-Knight = Karaktärer(10, 5, 0, 0, "Knight", Start)
+let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start)
+let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start)
+let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
 
 # ---------------------------------------- SLUT  ----------------------------------------
 
