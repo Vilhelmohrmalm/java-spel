@@ -541,28 +541,28 @@ def karaktärsval():
         return karaktärsval()
 
 
-def main():
-    typingPrint("""
+function main(){
+    console.log("""
     Välkommen till Daedalus labyrint
 
     Ditt mål är att nå lvl 30 men se upp för Taurus.
     Han har en slimekapasitet på 100%.
     """)
 
-    spelar_stats = karaktärsval()
+    spelar_stats = karaktärsval(),
 
-    val_vanlig_fas1(spelar_stats)
+    val_vanlig_fas1(spelar_stats),
 
-    val_vanlig_fas2(spelar_stats)
+    val_vanlig_fas2(spelar_stats),
 
-    val_vanlig_fas3(spelar_stats)
+    val_vanlig_fas3(spelar_stats),
 
-    boss_fight(spelar_stats)
+    boss_fight(spelar_stats),
 
-    typingPrint("Grattis du vann\n")
-    slut()
+    typingPrint("Grattis du vann\n"),
+    slut(),
 
-
+}
 main()
 
 // ---------------------------------------- SPELFUNKTIONER ----------------------------------------

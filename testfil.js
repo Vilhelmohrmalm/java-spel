@@ -31,7 +31,7 @@ let Start = new Vapen(0, 0, "en pinne")
 
 let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start)
 
-let Undead = new Monster(1, 0, "Undead")
+let Undead = new Monster(0, 0, "Undead")
 
 let spelar_stats = Assasin
 
