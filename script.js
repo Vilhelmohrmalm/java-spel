@@ -49,6 +49,7 @@ function monstrgenerator(){
         return (monster_stats)
         }
     }
+
     else if (Karaktärer.p_lvl < 20){
         let Lycan = new Monster(statgen(6, 12), statgen(4, 9), "Lycan")
         let Golem = new Monster(statgen(12, 17), statgen(3,3), "Golem")  
@@ -73,6 +74,7 @@ function monstrgenerator(){
         return (monster_stats)
         }
     }
+}
 
 
 let Start = new Vapen(0, 0, "en pinne")
@@ -96,20 +98,24 @@ function slut(){
 
 function lvl_poäng(spelar_stats){
 
-    let val = input("Vilken vill du höja\n H = hp\n S = str\n")
-    if (val in ["H", "h", "hp"]):
+    let val = prompt("Vilken vill du höja\n H = hp\n S = str\n")
+
+    if (["H", "h", "hp"].includes(val)){
         spelar_stats.p_hp += 1
-        typingPrint(f"Din hp är nu {spelar_stats.p_hp}\n")
+        console.log("Din hp är nu", spelar_stats.p_hp, "\n")
         spelar_stats.p_lvlpoäng = 0
         return spelar_stats
-    elif val in ["S", "s", "str"]:
+    }
+    else if (["S", "s", "str"].includes(val)){
         spelar_stats.p_str += 1
-        typingPrint(f"Din str är nu {spelar_stats.p_str}\n")
+        console.log('Din str är nu', spelar_stats.p_str, "\n")
         spelar_stats.p_lvlpoäng = 0
         return spelar_stats
-    else:
-        typingPrint("Din sopa välj ett av alternativen\n")
+    }
+    else{
+        console.log("Din sopa välj ett av alternativen\n")
         return lvl_poäng(spelar_stats)
+    }
 
 }
 // ---------------------------------------- lvl poäng  ----------------------------------------
