@@ -4,16 +4,18 @@ const SCREENWIDTH = innerWidth;
 const SCREENHEIGHT = innerHeight;
 let gameCanvas = document.getElementById("gameCanvas");
 let c = gameCanvas.getContext("2d"); // Drawing object
-gameCanvas.height = SCREENHEIGHT / 2;
-gameCanvas.width = SCREENWIDTH / 2;
+gameCanvas.height = 500
+gameCanvas.width = 700
+// gameCanvas.height = SCREENHEIGHT / 2;
+// gameCanvas.width = SCREENWIDTH / 2;
 // -------------------------------------
 // Player variables
-let playerX = 100;
-let playerY = 100;
+let playerX = 350;
+let playerY = 475;
 let playerWidth = 10;
 let playerHeight = 10;
-let dx = 2;
-let dy = 2;
+let dx = 3;
+let dy = 3;
 
 let directions = {
     left: false,
