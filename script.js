@@ -7,6 +7,47 @@ function statgen(a, b){
 
 
 
+function vapengenerator(spelar_stats){
+    if( spelar_stats.p_lvl < 10){
+        let Svärd = new Vapen(statgen(0, 1), statgen(1, 2), "ett Svärd")
+        let Sköld = new Vapen(statgen(1, 2), statgen(0, 0), "en Sköld")
+        let Yxa = new Vapen(statgen(0, 0), statgen(1, 4), "en Yxa")
+        let Pilbåge = new Vapen(statgen(0, 0), statgen(1, 3), "en Pilbåge")
+        let Spjut = new Vapen(statgen(0, 0), statgen(2, 3), "ett Spjut")
+        let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
+        let index = Math.floor(Math.random() * Vlista.length);
+        let vapen = Vlista[index]
+        return(vapen)
+    
+    }
+    else if (spelar_stats.p_lvl < 20){
+        let Svärd = new Vapen(statgen(0, 1), statgen(2, 4), "ett Svärd")
+        let Sköld = new Vapen(statgen(2, 3), statgen(0, 0), "en Sköld")
+        let Yxa = new Vapen(statgen(0, 0), statgen(1, 6), "en Yxa")
+        let Pilbåge = new Vapen(statgen(0, 0), statgen(2, 5), "en Pilbåge")
+        let Spjut = new Vapen(statgen(0, 0), statgen(3, 4), "ett Spjut")
+        let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
+        let index = Math.floor(Math.random() * Vlista.length);
+        let vapen = Vlista[index]
+        return(vapen)
+    }
+    else if(spelar_stats.p_lvl < 30){
+        let Svärd = new Vapen(statgen(1, 1), statgen(4, 5), "ett Svärd")
+        let Sköld = new Vapen(statgen(3, 4), statgen(0, 0), "en Sköld")
+        let Yxa = new Vapen(statgen(0, 0), statgen(3, 8), "en Yxa")
+        let Pilbåge = new Vapen(statgen(0, 0), statgen(4, 7), "en Pilbåge")
+        let Spjut = new Vapen(statgen(0, 0), statgen(5, 6), "ett Spjut")
+        let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
+        let index = Math.floor(Math.random() * Vlista.length);
+        let vapen = Vlista[index]
+        return(vapen)
+    }
+}
+    
+
+
+
+
 class Vapen {
         constructor(v_namn,v_hp,v_str){
         this.v_namn = v_namn;
@@ -123,150 +164,103 @@ function lvl_poäng(spelar_stats){
 // ---------------------------------------- FIGHT ----------------------------------------
 
 
-def fight(spelar_stats, monster_stats):
-    typingPrint(
-        f"och du stöter på en {monster_stats.m_namn} med {monster_stats.m_hp} hp och {monster_stats.m_str} str\n")
-    while monster_stats.m_hp > 0:
-        if spelar_stats.p_str + spelar_stats.vapen.v_str >= monster_stats.m_hp:
-            typingPrint("Du besegrade monstret\n")
-            typingPrint(f"Du har {spelar_stats.p_hp} hp kvar\n")
+function fight(spelar_stats, monster_stats){
+    console.log(
+        "och du stöter på en", monster_stats.m_namn, "med", monster_stats.m_hp, "hp och", monster_stats.m_str, "str\n")
+
+    while (monster_stats.m_hp > 0) {
+
+        if (spelar_stats.p_str + spelar_stats.vapen.v_str >= monster_stats.m_hp){
+            console.log("Du besegrade monstret\n")
+            console.log("Du har", spelar_stats.p_hp, "hp kvar\n")
             spelar_stats.p_lvl += 1
-            typingPrint(f"Du är är nu lvl {spelar_stats.p_lvl}\n")
+            console.log("Du är är nu lvl", spelar_stats.p_lvl,"\n")
             spelar_stats.p_lvlpoäng += 1
             return (spelar_stats)
-
-        elif spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp and monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp:
-            typingPrint(
-                f"Du dog\nDu nådde lvl {spelar_stats.p_lvl}\nMåste vara skill issue\n")
+        }
+        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+            console.log(
+                "Du dog\nDu nådde lvl", spelar_stats.p_lvl,"\nMåste vara skill issue\n")
             slut()
-        elif spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp and monster_stats.m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp:
-            monster_stats.m_hp = monster_stats.m_hp - \
-                spelar_stats.p_str - spelar_stats.vapen.v_str
-            spelar_stats.p_hp = spelar_stats.p_hp - \
-                monster_stats.m_str + spelar_stats.vapen.v_hp
+        }
+        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+            monster_stats.m_hp = monster_stats.m_hp - spelar_stats.p_str - spelar_stats.vapen.v_str
+            spelar_stats.p_hp = spelar_stats.p_hp - monster_stats.m_str + spelar_stats.vapen.v_hp
+        }
+        
+    }
+}
 
 
-def boss_fight(spelar_stats):
-    typingPrint("Nu har du nått sista kammaren men där väntar Taurus\n Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10\n")
-    m_hp = 30
-    m_str = 10
-    val = typingInput("S = sloss mot Taurus\nL = ge upp\n")
-    while m_hp == 30:
-        if val in ["S", "s", "sloss", "sloss mot Taurus"]:
-            while m_hp > 0:
-                if spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp:
-                    typingPrint(
+
+function boss_fight(spelar_stats){
+    console.log("Nu har du nått sista kammaren men där väntar Taurus\n Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10\n")
+   let m_hp = 30
+    let m_str = 10
+    let val = prompt("S = sloss mot Taurus\nL = ge upp\n")
+    while (m_hp == 30){
+        if (["S", "s", "sloss", "sloss mot Taurus"].includes(val)){
+            while (m_hp > 0){
+                if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp){
+                    console.log(
                         "Du besegrade tarus och kan änligen lämna labyrinten\n")
                     return (spelar_stats)
-
-                elif spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp and m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp:
-                    typingPrint(
-                        f"Taurus dödade dig\n Måste vara skill issue\n")
+                    }
+                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+                    console.log(
+                        "Taurus dödade dig\n Måste vara skill issue\n")
                     slut()
-                elif spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp and m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp:
-                    m_hp = m_hp - \
+                }
+                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+                    m_hp = m_hp -
                         spelar_stats.p_str - spelar_stats.vapen.v_str
-                    spelar_stats.p_hp = spelar_stats.p_hp - \
+                    spelar_stats.p_hp = spelar_stats.p_hp -
                         m_str + spelar_stats.vapen.v_hp
-        elif val in ["L", "l", "ge upp"]:
-            typingPrint(
+                }
+            }
+        }
+        else if  (["L", "l", "ge upp"].includes(val)){
+            console.log(
                 "Du gav upp och dog på lvl 30\n Måst vara skill issue\n")
             slut()
-        else:
+            }
+        else{
             typingPrint("Din sopa välj ett av alternativen\n")
+        }
+    }
+}
+
 // ---------------------------------------- FIGHT ----------------------------------------
 
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
 
-def kista_fas1(spelar_stats):
+function kista(spelar_stats){
 
-    Svärd = Vapen(health(0, 1), damage(1, 2), "ett Svärd")
-    Sköld = Vapen(health(1, 2), damage(0, 0), "en Sköld")
-    Yxa = Vapen(health(0, 0), damage(1, 4), "en Yxa")
-    Pilbåge = Vapen(health(0, 0), damage(1, 3), "en Pilbåge")
-    Spjut = Vapen(health(0, 0), damage(2, 3), "ett Spjut")
+    let vapen=vapengenerator(spelar_stats)
 
-    vapen = random.choice([Svärd, Sköld, Yxa, Pilbåge, Spjut])
-    typingPrint(
-        f"{vapen.v_namn}.\n det har en hp på {vapen.v_hp} och en styrka på {vapen.v_str}\n")
+    console.log(vapen.v_namn,"\n det har en hp på", vapen.v_hp, "och en styrka på",vapen.v_str,"\n")
 
-    typingPrint(
+    console.log(
         "Du måste ta bort ditt nuvarande vapen för att ta det nya\n")
 
-    typingPrint(
-        f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp och {spelar_stats.vapen.v_str} str\n ")
-    while True:
-        svar = typingInput(
+    console.log(
+        "Du har", spelar_stats.vapen.v_namn, "med", spelar_stats.vapen.v_hp," hp och", spelar_stats.vapen.v_str, "str\n ")
+    while (true){
+        let svar = prompt(
             "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat \n")
-        if svar == "1":
-            typingPrint("Du har nu ett nytt vapen i din ryggsäck\n")
+        if (svar == "1"){
+            console.log("Du har nu ett nytt vapen i din ryggsäck\n")
             spelar_stats.vapen = vapen
             return spelar_stats
-        else:
-            typingPrint(
+        }
+        else{
+            console.log(
                 "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans\n")
             return spelar_stats
-
-
-def kista_fas2(spelar_stats):
-
-    Svärd = Vapen(health(0, 1), damage(2, 4), "ett Svärd")
-    Sköld = Vapen(health(2, 3), damage(0, 0), "en Sköld")
-    Yxa = Vapen(health(0, 0), damage(1, 6), "en Yxa")
-    Pilbåge = Vapen(health(0, 0), damage(2, 5), "en Pilbåge")
-    Spjut = Vapen(health(0, 0), damage(3, 4), "ett Spjut")
-
-    vapen = random.choice([Svärd, Sköld, Yxa, Pilbåge, Spjut])
-    typingPrint(
-        f"{vapen.v_namn}.\n det har en hp på {vapen.v_hp} och en styrka på {vapen.v_str}\n")
-
-    typingPrint(
-        "Du måste ta bort ditt nuvarande vapen för att ta det nya\n")
-
-    typingPrint(
-        f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp och {spelar_stats.vapen.v_str} str\n ")
-    while True:
-        svar = typingInput(
-            "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat \n")
-        if svar == "1":
-            typingPrint("Du har nu ett nytt vapen i din ryggsäck\n")
-            spelar_stats.vapen = vapen
-            return spelar_stats
-        else:
-            typingPrint(
-                "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans\n")
-            return spelar_stats
-
-
-def kista_fas3(spelar_stats):
-
-    Svärd = Vapen(health(1, 1), damage(4, 5), "ett Svärd")
-    Sköld = Vapen(health(3, 4), damage(0, 0), "en Sköld")
-    Yxa = Vapen(health(0, 0), damage(3, 8), "en Yxa")
-    Pilbåge = Vapen(health(0, 0), damage(4, 7), "en Pilbåge")
-    Spjut = Vapen(health(0, 0), damage(5, 6), "ett Spjut")
-
-    vapen = random.choice([Svärd, Sköld, Yxa, Pilbåge, Spjut])
-    typingPrint(
-        f"{vapen.v_namn}.\n det har en hp på {vapen.v_hp} och en styrka på {vapen.v_str}\n")
-
-    typingPrint(
-        "Du måste ta bort ditt nuvarande vapen för att ta det nya\n")
-
-    typingPrint(
-        f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp och {spelar_stats.vapen.v_str} str\n ")
-    while True:
-        svar = typingInput(
-            "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat \n")
-        if svar == "1":
-            typingPrint("Du har nu ett nytt vapen i din ryggsäck\n")
-            spelar_stats.vapen = vapen
-            return spelar_stats
-        else:
-            typingPrint(
-                "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans\n")
-            return spelar_stats
+        }
+    }
+}
 
 
 def rum_typ_fas1(spelar_stats):
