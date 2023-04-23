@@ -263,92 +263,51 @@ function kista(spelar_stats){
 }
 
 
-def rum_typ_fas1(spelar_stats):
-    typ = random.randint(1, 10)
-    if typ in [1, 2, 3, 4, 10]:
-        monster_stats = monstrgenerator_fas1()
+function rum_typ(spelar_stats){
+    let typ = random.randint(1, 10)
+    if ( [1, 2, 3, 4, 10].includes(typ)){
+        let monster_stats = monstrgenerator()
         spelar_stats = fight(spelar_stats, monster_stats)
-        if spelar_stats.p_lvlpoäng == 3:
-            typingPrint(
+        if (spelar_stats.p_lvlpoäng == 3){
+            console.log(
                 "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
             typingPrint(
-                f"Dina nuvarande stats är {spelar_stats.p_hp} hp och {spelar_stats.p_str} str \n")
+                "Dina nuvarande stats är", spelar_stats.p_hp, "hp och", spelar_stats.p_str," str \n")
             spelar_stats = lvl_poäng(spelar_stats)
             return (spelar_stats)
-        else:
+        }
+        else{
             return spelar_stats
-    elif typ in [5, 6]:
-        typingPrint("och kommer till ett tomt rum\n")
+        }
+    }
+    else if ( [5, 6].includes(typ)){
+        console.log("och kommer till ett tomt rum\n")
         return (spelar_stats)
-    elif typ in [7, 8]:
-        val_kista_fas1(spelar_stats)
+    }
+    else if ([7, 8].includes(typ)){
+        val_kista(spelar_stats)
         return (spelar_stats)
-    elif typ in [9]:
+    }
+    else if ([9].includes(typ)){
         fälla(spelar_stats)
         return (spelar_stats)
+    }
+}
 
 
-def rum_typ_fas2(spelar_stats):
-    typ = random.randint(1, 10)
-    if typ in [1, 2, 3, 4]:
-        monster_stats = monstrgenerator_fas2()
-        spelar_stats = fight(spelar_stats, monster_stats)
-        if spelar_stats.p_lvlpoäng == 3:
-            typingPrint(
-                "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
-            typingPrint(
-                f"Dina nuvarande stats är {spelar_stats.p_hp} hp och {spelar_stats.p_str} str \n")
-            spelar_stats = lvl_poäng(spelar_stats)
-            return (spelar_stats)
-        else:
-            return spelar_stats
-    elif typ in [5, 6]:
-        typingPrint("och kommer till ett tomt rum\n")
-        return (spelar_stats)
-    elif typ in [7, 8]:
-        val_kista_fas2(spelar_stats)
-        return (spelar_stats)
-    elif typ in [9, 10]:
-        fälla(spelar_stats)
-        return (spelar_stats)
-
-
-def rum_typ_fas3(spelar_stats):
-    typ = random.randint(1, 10)
-    if typ in [1, 2, 3, 4]:
-        monster_stats = monstrgenerator_fas3()
-        spelar_stats = fight(spelar_stats, monster_stats)
-        if spelar_stats.p_lvlpoäng == 3:
-            typingPrint(
-                "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
-            typingPrint(
-                f"Dina nuvarande stats är {spelar_stats.p_hp} hp och {spelar_stats.p_str} str \n")
-            spelar_stats = lvl_poäng(spelar_stats)
-            return (spelar_stats)
-        else:
-            return spelar_stats
-        return (spelar_stats)
-    elif typ in [5, 6]:
-        typingPrint("och kommer till ett tomt rum\n")
-        return (spelar_stats)
-    elif typ in [7, 8]:
-        val_kista_fas3(spelar_stats)
-        return (spelar_stats)
-    elif typ in [9, 10]:
-        fälla(spelar_stats)
-        return (spelar_stats)
-
-
-def fälla(spelar_stats):
-    if spelar_stats.p_hp > 1:
+function fälla(spelar_stats){
+    if (spelar_stats.p_hp > 1){
         spelar_stats.p_hp -= 1
-        typingPrint(
-            f"där du klev i en fälla, du har nu {spelar_stats.p_hp} hp kvar\n")
+        console.log(
+            "där du klev i en fälla, du har nu", spelar_stats.p_hp," hp kvar\n")
         return spelar_stats
-    else:
+    }
+    else{
         typingPrint(
-            f"där du dör i en fälla\n Du nådde lvl {spelar_stats.p_lvl}\n Måste vara skill issue\n")
+            "där du dör i en fälla\n Du nådde lvl", spelar_stats.p_lvl,"\n Måste vara skill issue\n")
         slut()
+    }
+}
 
 
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
@@ -356,183 +315,106 @@ def fälla(spelar_stats):
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
 
-def val_vanlig_fas1(spelar_stats):
+function val_vanlig(spelar_stats){
 
-    while spelar_stats.p_lvl <= 9:
-        val = typingInput(
+    while (spelar_stats.p_lvl <= 30){
+
+        if ( [10, 20].includes(spelar_stats.p_lvl)){
+            spelar_stats.p_hp += 3 
+        }
+
+        let val = prompt(
             "vad vill du göra?\n S = se stats\n V = gå vänster\n F = gå fram\n H = gå höger\n R = öppna ryggsäck\n")
-        if val in ["S", "stats", "s", "se stats"]:
-            typingPrint(
-                f"Du har {spelar_stats.p_hp} hp, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-
-        elif val in ["V", "vänster", "v", "gå vänster"]:
-            typingPrint("Du går igenom dörren till vänster ")
-            rum_typ_fas1(spelar_stats)
-        elif val in ["H", "höger", "h", "gå höger"]:
-            typingPrint("Du går igenom dörren till höger ")
-            rum_typ_fas1(spelar_stats)
-        elif val in ["R", "ryggsäck", "r", "öppna ryggsäck"]:
-            typingPrint(
-                f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp {spelar_stats.vapen.v_str} str \n")
-        elif val in ["F", "fram", "f", "fram"]:
-            typingPrint("Du går igenom dörren framför dig ")
-            rum_typ_fas1(spelar_stats)
-        else:
-            typingPrint("Din sopa välj ett av alternativen\n")
-
+        if ( ["S", "stats", "s", "se stats"].includes(val)){
+            console.log(
+                "Du har", spelar_stats.p_hp," hp, din str är", spelar_stats.p_str," och din lvl är", spelar_stats.p_lvl,"\n")
+            }
+        else if ( ["V", "vänster", "v", "gå vänster"].includes(val)){
+            console.log("Du går igenom dörren till vänster ")
+            rum_typ(spelar_stats)
+        }
+        else if ( ["H", "höger", "h", "gå höger"].includes(val)){
+           console.log("Du går igenom dörren till höger ")
+            rum_typ(spelar_stats)
+        }
+        else if (["R", "ryggsäck", "r", "öppna ryggsäck"].includes(val)){
+            console.log(
+                "Du har", spelar_stats.vapen.v_namn," med", spelar_stats.vapen.v_hp," hp", spelar_stats.vapen.v_str," str \n")
+            }
+        else if (["F", "fram", "f", "fram"].includes(val)){
+            console.log("Du går igenom dörren framför dig ")
+            rum_typ(spelar_stats)
+        }
+        else{
+            console.log("Din sopa välj ett av alternativen\n")
+        }
+    }
     return (spelar_stats)
+}
 
 
-def val_vanlig_fas2(spelar_stats):
-    spelar_stats.p_hp += 3
-    typingPrint(
-        "Du har nu nått fas två som betyder att monstrerna kommer vara starkare och vapnen bättre\n Men du får 3 extra hp\n")
-    while spelar_stats.p_lvl <= 19:
-        val = typingInput(
-            "vad vill du göra?\n S = se stats\n V = gå vänster\n F = gå fram\n H = gå höger\n R = öppna ryggsäck\n")
-        if val in ["S", "stats", "s", "se stats"]:
-            typingPrint(
-                f"Du har {spelar_stats.p_hp} hp, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-
-        elif val in ["V", "vänster", "v", "gå vänster"]:
-            typingPrint("Du går igenom dörren till vänster ")
-            rum_typ_fas2(spelar_stats)
-        elif val in ["H", "höger", "h", "gå höger"]:
-            typingPrint("Du går igenom dörren till höger ")
-            rum_typ_fas2(spelar_stats)
-        elif val in ["R", "ryggsäck", "r", "öppna ryggsäck"]:
-            typingPrint(
-                f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp {spelar_stats.vapen.v_str} str \n")
-        elif val in ["F", "fram", "f", "gå fram"]:
-            typingPrint("Du går igenom dörren framför dig ")
-            rum_typ_fas2(spelar_stats)
-        else:
-            typingPrint("Din sopa välj ett av alternativen\n")
-
-    return (spelar_stats)
-
-
-def val_vanlig_fas3(spelar_stats):
-    spelar_stats.p_hp += 3
-    typingPrint(
-        "Du har nu nått fas tre som betyder att monstrerna kommer vara starkare och vapnen bättre\n Men du får 3 extra hp\n")
-    while spelar_stats.p_lvl <= 29:
-        val = typingInput(
-            "vad vill du göra?\n S = se stats\n V = gå vänster\n F = gå fram\n H = gå höger\n R = öppna ryggsäck\n")
-        if val in ["S", "stats", "s", "se stats"]:
-            typingPrint(
-                f"Du har {spelar_stats.p_hp} hp, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-
-        elif val in ["V", "vänster", "v", "gå vänster"]:
-            typingPrint("Du går igenom dörren till vänster ")
-            rum_typ_fas3(spelar_stats)
-        elif val in ["H", "höger", "h", "gå höger"]:
-            typingPrint("Du går igenom dörren till höger ")
-            rum_typ_fas3(spelar_stats)
-        elif val in ["R", "ryggsäck", "r", "öppna ryggsäck"]:
-            typingPrint(
-                f"Du har {spelar_stats.vapen.v_namn} med {spelar_stats.vapen.v_hp} hp {spelar_stats.vapen.v_str} str \n")
-        elif val in ["F", "fram", "f", "gå fram"]:
-            typingPrint("Du går igenom dörren framför dig ")
-            rum_typ_fas3(spelar_stats)
-        else:
-            typingPrint("Din sopa välj ett av alternativen\n")
-
-    return (spelar_stats)
-
-
-def val_kista_fas1(spelar_stats):
-    val = typingInput(
+function val_kista(spelar_stats){
+    let val = prompt(
         "och hittar en kista. Vad vill du göra?\n S = se stats\n Ö = öppna kista\n L = lämna kistan\n")
-    if val in ["S", "stats", "s", "se stats"]:
-        typingPrint(
-            f"Du har hp {spelar_stats.p_hp}, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-        return val_kista_fas1(spelar_stats)
-    elif val in ["Ö", "öppna", "ö", "öppna kista"]:
-        typingPrint(
+    if (["S", "stats", "s", "se stats"].includes(val)){
+        console.log(
+            "Du har hp", spelar_stats.p_hp,", din str är", spelar_stats.p_str," och din lvl är", spelar_stats.p_lvl,"\n")
+        return val_kista(spelar_stats)
+    }
+    else if (["Ö", "öppna", "ö", "öppna kista"].includes(val)){
+        console.log(
             "du öppnar kistan och i den hittar du ")
-        kista_fas1(spelar_stats)
+        kista(spelar_stats)
         return spelar_stats
-    elif val in ["L", "lämna kistan", "lämna", "l"]:
-        typingPrint("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
+    }
+    else if (["L", "lämna kistan", "lämna", "l"].includes(val)){
+        console.log("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
         return spelar_stats
-    else:
-        typingPrint("din sopa välj ett av alternativen")
-        return val_kista_fas1(spelar_stats)
-
-
-def val_kista_fas2(spelar_stats):
-    val = typingInput(
-        "och hittar en kista. Vad vill du göra?\n S = se stats\n Ö = öppna kista\n L = lämna kistan\n")
-    if val in ["S", "stats", "s", "se stats"]:
-        typingPrint(
-            f"Du har hp {spelar_stats.p_hp}, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-        return val_kista_fas2(spelar_stats)
-    elif val in ["Ö", "öppna", "ö", "öppna kista"]:
-        typingPrint(
-            "du öppnar kistan och i den hittar du ")
-        kista_fas2(spelar_stats)
-        return spelar_stats
-    elif val in ["L", "lämna kistan", "lämna", "l"]:
-        typingPrint("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
-        return spelar_stats
-    else:
-        typingPrint("din sopa välj ett av alternativen")
-        return val_kista_fas2(spelar_stats)
-
-
-def val_kista_fas3(spelar_stats):
-    val = typingInput(
-        "och hittar en kista. Vad vill du göra?\n S = se stats\n Ö = öppna kista\n L = lämna kistan\n")
-    if val in ["S", "stats", "s", "se stats"]:
-        typingPrint(
-            f"Du har hp {spelar_stats.p_hp}, din str är {spelar_stats.p_str} och din lvl är {spelar_stats.p_lvl}\n")
-        return val_kista_fas3(spelar_stats)
-    elif val in ["Ö", "öppna", "ö", "öppna kista"]:
-        typingPrint(
-            "du öppnar kistan och i den hittar du ")
-        kista_fas3(spelar_stats)
-        return spelar_stats
-    elif val in ["L", "lämna kistan", "lämna", "l"]:
-        typingPrint("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
-        return spelar_stats
-    else:
-        typingPrint("din sopa välj ett av alternativen")
-        return val_kista_fas3(spelar_stats)
+    }
+    else{
+        console.log("din sopa välj ett av alternativen")
+        return val_kista(spelar_stats)
+    }
+}
 
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
 // ---------------------------------------- SPELFUNKTIONER ----------------------------------------
 
 
-def karaktärsval():
-    namn = (typingInput("""
+function karaktärsval(){
+    let namn = prompt("""
     Välj din karaktär.
     svara med 1, 2 eller 3.
 
     1. Assasin       2. Barbarian       3. Knight
     hp = 5           hp = 8             hp = 10 
     str = 10         str = 7            str = 5 
-    """))
+    """)
 
-    if namn == "1":
+    if (namn == "1"){
         Spelar_stats = (Assasin)
-        typingPrint(" Du är nu en Assasin med 5 hp och 10 str \n")
+        console.log(" Du är nu en Assasin med 5 hp och 10 str \n")
         return (Spelar_stats)
+    }
 
-    elif namn == "2":
+    else if (namn == "2"){
         Spelar_stats = (Barb)
-        typingPrint(" Du är nu en Barbarian med 8 hp och 7 str \n")
+        console.log(" Du är nu en Barbarian med 8 hp och 7 str \n")
         return (Spelar_stats)
+    }
 
-    elif namn == "3":
+    else if (namn == "3"){
         Spelar_stats = (Knight)
-        typingPrint(" Du är nu en Knight med 10 hp och 5 str \n")
+        console.log(" Du är nu en Knight med 10 hp och 5 str \n")
         return (Spelar_stats)
+    }
 
-    else:
-        typingPrint("svara 1, 2 eller 3 din sopa\n")
+    else{
+        console.log("svara 1, 2 eller 3 din sopa\n")
         return karaktärsval()
+    }
+}
 
 
 function main(){
@@ -543,17 +425,13 @@ function main(){
     Han har en slimekapasitet på 100%.
     """)
 
-    spelar_stats = karaktärsval(),
+    let spelar_stats = karaktärsval(),
 
-    val_vanlig_fas1(spelar_stats),
-
-    val_vanlig_fas2(spelar_stats),
-
-    val_vanlig_fas3(spelar_stats),
+    val_vanlig(spelar_stats),
 
     boss_fight(spelar_stats),
 
-    typingPrint("Grattis du vann\n"),
+    console.log("Grattis du vann\n"),
     slut(),
 
 }
