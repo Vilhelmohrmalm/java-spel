@@ -98,3 +98,6 @@ function animate() {
 // -------------------------------------
 // ------------ Start game ------------
 animate();
+
+
+<audio id="audio" src="http://music.mp3"></audio>
