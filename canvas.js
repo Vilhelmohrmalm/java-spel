@@ -12,10 +12,12 @@ gameCanvas.width = 700
 // Player variables
 let playerX = 350;
 let playerY = 475;
-let playerWidth = 10;
-let playerHeight = 10;
-let dx = 3;
-let dy = 3;
+let playerWidth = 20;
+let playerHeight = 20;
+let dx = 5;
+let dy = 5;
+
+
 
 let directions = {
     left: false,
@@ -23,6 +25,8 @@ let directions = {
     up: false,
     down: false,
 };
+
+
 // -------------------------------------
 // ------------ Player movement ------------
 document.addEventListener("keydown", (e) => {
@@ -68,21 +72,26 @@ function animate() {
     requestAnimationFrame(animate); // Run gameloop recursively
     c.clearRect(0, 0, gameCanvas.width, gameCanvas.height); // Clear screen
 
+    c.fillStyle = "white";
     c.fillRect(playerX, playerY, playerWidth, playerHeight); // Draw player
 
-    if (directions.right) {
+    c.beginPath();
+    c.rect(playerX, playerY, playerWidth, playerHeight);
+    c.stroke();
+
+    if (directions.right && playerX + playerWidth < 700) {
         playerX += dx;
     }
 
-    if (directions.left) {
+    if (directions.left && playerX > 0) {
         playerX -= dx;
     }
 
-    if (directions.up) {
+    if (directions.up && playerY > 0) {
         playerY -= dy;
     }
 
-    if (directions.down) {
+    if (directions.down && playerY + playerHeight < 500) {
         playerY += dy;
     }
 }
