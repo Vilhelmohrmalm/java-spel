@@ -69,6 +69,8 @@ document.addEventListener("keyup", (e) => {
 // -------------------------------------
 // ------------ Animation ------------
 function animate() {
+    let myAudio = document.querySelector('#audio')
+    myAudio.play()
     requestAnimationFrame(animate); // Run gameloop recursively
     c.clearRect(0, 0, gameCanvas.width, gameCanvas.height); // Clear screen
 
@@ -100,4 +102,3 @@ function animate() {
 animate();
 
 
-<audio id="audio" src="http://music.mp3"></audio>
