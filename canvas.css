@@ -1,5 +1,6 @@
 body {
-  margin: 0px;
+  background-color: rgb(39, 39, 39);
+  display: flex;
 }
 
 canvas {
@@ -8,4 +9,13 @@ canvas {
   background-size: cover;
   height: 44vw;
   width: 75vw;
+  margin-right: 0.5vw;
+}
+
+.menu {
+  width: 25vw;
+  height: 43.5vw;
+  border: 5px solid rgb(99, 63, 63);
+  background-color: white;
+  right: 0;
 }
