@@ -93,7 +93,7 @@ function animate() {
         playerY -= dy;
     }
 
-    if (directions.down && playerY + playerHeight < 475) {
+    if (directions.down && playerY + playerHeight < 500) {
         playerY += dy;
     }
 }
