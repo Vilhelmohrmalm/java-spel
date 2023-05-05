@@ -81,22 +81,33 @@ function animate() {
     c.rect(playerX, playerY, playerWidth, playerHeight);
     c.stroke();
 
-    if (directions.right && playerX + playerWidth < 700) {
+    if (directions.right && playerX + playerWidth < 675) {
         playerX += dx;
     }
 
-    if (directions.left && playerX > 0) {
+    if (directions.left && playerX > 25) {
         playerX -= dx;
     }
 
-    if (directions.up && playerY > 0) {
+    if (directions.up && playerY > 30) {
         playerY -= dy;
     }
 
-    if (directions.down && playerY + playerHeight < 500) {
+    if (directions.down && playerY + playerHeight < 475) {
         playerY += dy;
     }
 }
+    if ( playerX + playerWidth == 675 && playerY> 198 && playerY<343){
+        rum_typ()
+    }
+
+    if ( playerX + playerWidth == 25 && playerY> 198 && playerY<343){
+        rum_typ()
+    }
+
+    if ( playerY == 30 && playerX> 280 && playerX<420){
+        rum_typ()
+    }
 // -------------------------------------
 // ------------ Start game ------------
 animate();
