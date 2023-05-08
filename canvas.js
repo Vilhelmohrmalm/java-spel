@@ -1,8 +1,21 @@
+let spelar_stats;
+
 function start(){
     var start = document.getElementById("startsida")
+    var karaktär = document.getElementById("karaktärsval")
     start.style.display = "none"
+    karaktär.style.display= "block"
 }
 
+function assa(){
+ var val = document.getElementById("karaktärsval")
+ val.style.display = "none"
+ spelar_stats = Asssin;
+
+
+}
+
+console.log(spelar_stats)
 function rum_typ(spelar_stats){
     let typ = random.randint(1, 10)
     if ( [1, 2, 3, 4, 10].includes(typ)){

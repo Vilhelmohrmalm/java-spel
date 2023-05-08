@@ -40,3 +40,66 @@ canvas {
   margin-left: 40vw;
   margin-top: 5vw;
 }
+
+#karaktärsval {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+}
+
+.förklaring2 {
+  color: white;
+  font-size: 5vw;
+}
+
+.karaktärer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.assasin {
+  border: solid white;
+  margin: 1vw;
+}
+
+.knight {
+  border: solid white;
+  margin: 1vw;
+}
+
+.barb {
+  border: solid white;
+  margin: 1vw;
+}
+
+.bild {
+  width: 29vw;
+  height: auto;
+}
+
+.stats {
+  color: white;
+  font-size: 2vw;
+  margin-left: 1vw;
+}
+
+.välj {
+  color: white;
+  background-color: black;
+  border: solid white;
+  margin-left: 1vw;
+  font-size: 1.5vw;
+}
+
+.välj:hover {
+  scale: 1.1;
+  transition: 0.5s;
+}
+
+.start:hover {
+  scale: 1.1;
+  transition: 0.5s;
+}
