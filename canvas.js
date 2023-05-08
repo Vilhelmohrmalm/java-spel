@@ -124,9 +124,6 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
 
 
 
-
-let spelar_stats;
-
 function start(){
     var start = document.getElementById("startsida")
     var karaktär = document.getElementById("karaktärsval")
@@ -137,22 +134,24 @@ function start(){
 function assa(){
  var val = document.getElementById("karaktärsval")
  val.style.display = "none"
- spelar_stats = Asssin;
+ spelar_stats = Assasin;
+ animate(spelar_stats);
 }
 
 function barb(){
     var val = document.getElementById("karaktärsval")
     val.style.display = "none"
     spelar_stats = Barb;
+    animate(spelar_stats);
 }
 
 function knig(){
     var val = document.getElementById("karaktärsval")
     val.style.display = "none"
     spelar_stats = knig;
+    animate(spelar_stats);
 }
 
-console.log(spelar_stats)
 function rum_typ(spelar_stats){
     let typ = random.randint(1, 10)
     if ( [1, 2, 3, 4, 10].includes(typ)){
@@ -263,7 +262,7 @@ document.addEventListener("keyup", (e) => {
 });
 // -------------------------------------
 // ------------ Animation ------------
-function animate() {
+function animate(spelar_stats) {
     let myAudio = document.querySelector('#audio')
     myAudio.play()
     requestAnimationFrame(animate); // Run gameloop recursively
@@ -305,6 +304,6 @@ function animate() {
     }
 // -------------------------------------
 // ------------ Start game ------------
-animate();
+
 
 
