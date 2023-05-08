@@ -7,14 +7,14 @@ canvas {
   border: 2px solid black;
   background-image: url(pixil-frame-1.png);
   background-size: cover;
-  height: 44vw;
+  height: 43.5vw;
   width: 75vw;
   margin-right: 0.5vw;
 }
 
 .menu {
   width: 25vw;
-  height: 43.5vw;
+  height: 43vw;
   border: 5px solid rgb(99, 63, 63);
   background-color: white;
   right: 0;
