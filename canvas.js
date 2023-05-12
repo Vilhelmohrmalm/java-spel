@@ -56,13 +56,14 @@ class Vapen {
 
 
 class Karaktärer {
-    constructor(p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen) {
+    constructor(p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen, p_färg) {
         this.p_hp = p_hp;
         this.p_str = p_str;
         this.p_lvl = p_lvl;
         this.p_lvlpoäng = p_lvlpoäng;
         this.p_namn = p_namn;
         this.vapen = vapen;
+        this.p_färg = p_färg;
     }
 }
 
@@ -120,9 +121,9 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start)
-let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start)
-let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
+let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "lightblack")
+let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
+let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
 
 function rum_typ(spelar_stats) {
@@ -302,7 +303,7 @@ function animate(spelar_stats) {
     requestAnimationFrame(animate); // Run gameloop recursively
     c.clearRect(0, 0, gameCanvas.width, gameCanvas.height); // Clear screen
 
-    c.fillStyle = "white";
+    c.fillStyle = Karaktärer.p_färg;
     c.fillRect(playerX, playerY, playerWidth, playerHeight); // Draw player
 
     c.beginPath();
@@ -338,6 +339,5 @@ if (playerY == 30 && playerX > 280 && playerX < 420) {
 }
 // -------------------------------------
 // ------------ Start game ------------
-
 
 
