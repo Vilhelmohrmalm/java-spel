@@ -125,7 +125,7 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver" )
 
 
 function rum_typ(spelar_stats){
-    console.log("penis")
+    console.log("hej")
     let typ = random.randint(1, 10)
     if ( [1, 2, 3, 4, 10].includes(typ)){
         let monster_stats = monstrgenerator()

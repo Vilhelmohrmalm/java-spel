@@ -11,7 +11,7 @@ class Vapen {
 }
 
 class Karaktärer{
-    constructor( p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen){
+    constructor( p_hp, p_str, p_lvl, p_lvlpoäng, p_namn, vapen, ){
     this.p_hp = p_hp;
     this.p_str = p_str;
     this.p_lvl = p_lvl;
