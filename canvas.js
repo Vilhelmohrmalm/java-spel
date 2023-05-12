@@ -122,7 +122,37 @@ let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start)
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start)
 
 
-
+function rum_typ(spelar_stats){
+    console.log("penis")
+    let typ = random.randint(1, 10)
+    if ( [1, 2, 3, 4, 10].includes(typ)){
+        let monster_stats = monstrgenerator()
+        spelar_stats = fight(spelar_stats, monster_stats)
+        if (spelar_stats.p_lvlpoäng == 3){
+            console.log(
+                "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
+            typingPrint(
+                "Dina nuvarande stats är", spelar_stats.p_hp, "hp och", spelar_stats.p_str," str \n")
+            spelar_stats = lvl_poäng(spelar_stats)
+            return (spelar_stats)
+        }
+        else{
+            return spelar_stats
+        }
+    }
+    else if ( [5, 6].includes(typ)){
+        console.log("och kommer till ett tomt rum\n")
+        return (spelar_stats)
+    }
+    else if ([7, 8].includes(typ)){
+        val_kista(spelar_stats)
+        return (spelar_stats)
+    }
+    else if ([9].includes(typ)){
+        fälla(spelar_stats)
+        return (spelar_stats)
+    }
+}
 
 function start(){
     var start = document.getElementById("startsida")
