@@ -1,3 +1,7 @@
+
+// ---------------------------- klasser och stat generatorer--------------------------------------------//
+
+
 spelar_stats = "";
 
 
@@ -49,7 +53,7 @@ function vapengenerator(spelar_stats) {
 
 
 class Vapen {
-    constructor(v_namn, v_hp, v_str) {
+    constructor(v_hp, v_str, v_namn) {
         this.v_namn = v_namn;
         this.v_hp = v_hp;
         this.v_str = v_str;
@@ -129,8 +133,47 @@ let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "lightblack")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
+// ---------------------------- klasser och stat generatorer--------------------------------------------//
+
+// ---------------------------------------- SLUT  ----------------------------------------
+
+function slut(){
+    console.log("Game Over")
+    quit()
+}
+// ---------------------------------------- SLUT  ----------------------------------------
+
+// ---------------------------------------- lvl poäng  ----------------------------------------
+
+function lvl_poäng(){
+
+    let val = prompt("Vilken vill du höja\n H = hp\n S = str\n")
+
+    if (["H", "h", "hp"].includes(val)){
+        spelar_stats.p_hp += 1
+        console.log("Din hp är nu", spelar_stats.p_hp, "\n")
+        spelar_stats.p_lvlpoäng = 0
+
+    }
+    else if (["S", "s", "str"].includes(val)){
+        spelar_stats.p_str += 1
+        console.log('Din str är nu', spelar_stats.p_str, "\n")
+        spelar_stats.p_lvlpoäng = 0
+
+    }
+    else{
+        console.log("Din sopa välj ett av alternativen\n")
+        return lvl_poäng()
+    }
+
+}
+
+// ---------------------------------------- lvl poäng  ----------------------------------------
+
+// ---------------------------------------- FIGHT ----------------------------------------
 
 function fight(monster_stats){
+
     console.log(
         "och du stöter på en", monster_stats.m_namn, "med", monster_stats.m_hp, "hp och", monster_stats.m_str, "str\n")
 
@@ -142,7 +185,7 @@ function fight(monster_stats){
             spelar_stats.p_lvl += 1
             console.log("Du är är nu lvl", spelar_stats.p_lvl,"\n")
             spelar_stats.p_lvlpoäng += 1
-            return (spelar_stats)
+ 
         }
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
             console.log(
@@ -154,6 +197,37 @@ function fight(monster_stats){
             spelar_stats.p_hp = spelar_stats.p_hp - monster_stats.m_str + spelar_stats.vapen.v_hp
         }
         
+    }
+}
+
+// ---------------------------------------- FIGHT ----------------------------------------
+
+// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
+
+function kista(){
+
+    let vapen=vapengenerator()
+
+    console.log(vapen.v_namn,"\n det har en hp på", vapen.v_hp, "och en styrka på",vapen.v_str,"\n")
+
+    console.log(
+        "Du måste ta bort ditt nuvarande vapen för att ta det nya\n")
+
+    console.log(
+        "Du har", spelar_stats.vapen.v_namn, "med", spelar_stats.vapen.v_hp," hp och", spelar_stats.vapen.v_str, "str\n ")
+    while (true){
+        let svar = prompt(
+            "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat \n")
+        if (svar == "1"){
+            console.log("Du har nu ett nytt vapen i din ryggsäck\n")
+            spelar_stats.vapen = vapen
+
+        }
+        else{
+            console.log(
+                "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans\n")
+
+        }
     }
 }
 
@@ -170,29 +244,67 @@ function rum_typ(){
                 "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
             typingPrint(
                 "Dina nuvarande stats är", spelar_stats.p_hp, "hp och", spelar_stats.p_str, " str \n")
-            spelar_stats = lvl_poäng(spelar_stats)
-            return (spelar_stats)
+            spelar_stats = lvl_poäng()
         }
-        else {
-            return spelar_stats
-        }
+
     }
     else if ([5, 6].includes(typ)) {
         console.log("och kommer till ett tomt rum\n")
-        return (spelar_stats)
+
     }
     else if ([7, 8].includes(typ)) {
-        spelar_stats = val_kista(spelar_stats)
-        return (spelar_stats)
+        spelar_stats = val_kista()
+
     }
     else if ([9].includes(typ)) {
-        spelar_stats = fälla(spelar_stats)
-        return (spelar_stats)
+        spelar_stats = fälla()
+
+    }
+
+}
+
+
+function fälla(){
+    if (spelar_stats.p_hp > 1){
+        spelar_stats.p_hp -= 1
+        console.log(
+            "där du klev i en fälla, du har nu", spelar_stats.p_hp," hp kvar\n")
+
     }
     else{
-        return spelar_stats
+        typingPrint(
+            "där du dör i en fälla\n Du nådde lvl", spelar_stats.p_lvl,"\n Måste vara skill issue\n")
+        slut()
     }
 }
+
+// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
+
+// ---------------------------------------- VALFUNKTIONER ----------------------------------------
+
+function val_kista(){
+    let val = prompt(
+        "och hittar en kista. Vad vill du göra?\n Ö = öppna kista\n L = lämna kistan\n")
+
+    if (["Ö", "öppna", "ö", "öppna kista"].includes(val)){
+        console.log(
+            "du öppnar kistan och i den hittar du ")
+        kista()
+
+    }
+    else if (["L", "lämna kistan", "lämna", "l"].includes(val)){
+        console.log("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
+
+    }
+    else{
+        console.log("din sopa välj ett av alternativen")
+        return val_kista()
+    }
+}
+
+// ---------------------------------------- VALFUNKTIONER ----------------------------------------
+
+// ---------------------------------------- STARTVAL ----------------------------------------
 
 function start() {
 
@@ -228,7 +340,7 @@ function knig() {
     animate();
 }
 
-
+// ---------------------------------------- STARTVAL ----------------------------------------
 
 
 
@@ -335,14 +447,20 @@ function animate() {
 
     if (playerX + playerWidth == 675 && playerY > 198 && playerY < 343) {
         rum_typ()
+         playerX = 350;
+         playerY = 475;
     }
     
     if (playerX + playerWidth == 25 && playerY > 198 && playerY < 343) {
         rum_typ()
+         playerX = 350;
+         playerY = 475;
     }
     
     if (playerY == 30 && playerX > 280 && playerX < 420) {
         rum_typ()
+         playerX = 350;
+         playerY = 475;
     }
 }
 
