@@ -1,3 +1,6 @@
+spelar_stats = "";
+
+
 function statgen(a, b) {
     return (Math.round(Math.random() * (b-a) + a))
 }
@@ -77,10 +80,10 @@ class Monster {
     //  return f"Du stöter på en {self.m_namn}, den har {self.m_hp} hp och {self.m_str} styrka"
 }
 
-function monstrgenerator(spelar_stats) {
-    console.log(spelar_stats.p_lvl)
+function monstrgenerator() {
+
     let monster = Math.round(Math.random())
-    if (Karaktärer.p_lvl < 10) {
+    if (spelar_stats.p_lvl < 10) {
         let Slime = new Monster(statgen(4, 11), statgen(2, 6), "Slime")
         let Goblin = new Monster(statgen(3, 7), statgen(3, 8), "Goblin")
         if (monster == 1) {
@@ -93,7 +96,7 @@ function monstrgenerator(spelar_stats) {
         }
     }
 
-    else if (Karaktärer.p_lvl < 20 && Karaktärer.p_lvl >= 10) {
+    else if (spelar_stats.p_lvl < 20 && spelar_stats.p_lvl >= 10) {
         let Lycan = new Monster(statgen(6, 12), statgen(4, 9), "Lycan")
         let Golem = new Monster(statgen(12, 17), statgen(3, 3), "Golem")
         if (monster == 1) {
@@ -105,7 +108,7 @@ function monstrgenerator(spelar_stats) {
             return (monster_stats)
         }
     }
-    else (Karaktärer.p_lvl < 30  && Karaktärer.p_lvl >= 20); {
+    else (spelar_stats.p_lvl < 30  && spelar_stats.p_lvl >= 20); {
         let Undead = new Monster(statgen(15, 22), statgen(4, 5), "Undead")
         let Orc = new Monster(statgen(9, 15), statgen(6, 10), "Orc")
         if (monster == 1) {
@@ -127,7 +130,7 @@ let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
 
-function fight(spelar_stats, monster_stats){
+function fight(monster_stats){
     console.log(
         "och du stöter på en", monster_stats.m_namn, "med", monster_stats.m_hp, "hp och", monster_stats.m_str, "str\n")
 
@@ -156,12 +159,12 @@ function fight(spelar_stats, monster_stats){
 
 
 
-function rum_typ(spelar_stats){
+function rum_typ(){
 
     let typ = Math.round( Math.random()*10)
     if ([1, 2, 3, 4, 10].includes(typ)) {
-        let monster_stats = monstrgenerator(spelar_stats)
-        spelar_stats = fight(spelar_stats, monster_stats)
+        let monster_stats = monstrgenerator()
+        spelar_stats = fight( monster_stats)
         if (spelar_stats.p_lvlpoäng == 3) {
             console.log(
                 "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
@@ -192,6 +195,7 @@ function rum_typ(spelar_stats){
 }
 
 function start() {
+
     var start = document.getElementById("startsida")
     var karaktär = document.getElementById("karaktärsval")
     start.style.display = "none"
@@ -201,23 +205,27 @@ function start() {
 function assa() {
     var val = document.getElementById("karaktärsval")
     val.style.display = "none"
-    spelar_stats = Assasin;
+    let hero = Assasin;
     c.fillStyle = "black";
-    animate(spelar_stats);
+    spelar_stats = hero
+    animate();
 }
 
 function barb() {
     var val = document.getElementById("karaktärsval")
     val.style.display = "none"
-    spelar_stats = Barb;
-    animate(spelar_stats);
+    let hero = Barb;
+    spelar_stats = hero 
+    animate();
 }
 
 function knig() {
     var val = document.getElementById("karaktärsval")
     val.style.display = "none"
-    spelar_stats = knig;
-    animate(spelar_stats);
+    let hero = Knight;
+    spelar_stats = hero  
+
+    animate();
 }
 
 
@@ -294,13 +302,15 @@ document.addEventListener("keyup", (e) => {
 });
 // -------------------------------------
 // ------------ Animation ------------
-function animate(spelar_stats) {
+function animate() {
+
+
     let myAudio = document.querySelector('#audio')
     myAudio.play()
     requestAnimationFrame(animate); // Run gameloop recursively
     c.clearRect(0, 0, gameCanvas.width, gameCanvas.height); // Clear screen
 
-    c.fillStyle = Karaktärer.p_färg;
+    c.fillStyle = spelar_stats.p_färg;
     c.fillRect(playerX, playerY, playerWidth, playerHeight); // Draw player
 
     c.beginPath();
@@ -324,15 +334,15 @@ function animate(spelar_stats) {
     }
 
     if (playerX + playerWidth == 675 && playerY > 198 && playerY < 343) {
-        rum_typ(spelar_stats)
+        rum_typ()
     }
     
     if (playerX + playerWidth == 25 && playerY > 198 && playerY < 343) {
-        rum_typ(spelar_stats)
+        rum_typ()
     }
     
     if (playerY == 30 && playerX > 280 && playerX < 420) {
-        rum_typ(spelar_stats)
+        rum_typ()
     }
 }
 
