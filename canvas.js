@@ -185,6 +185,7 @@ function fight(monster_stats){
             spelar_stats.p_lvl += 1
             console.log("Du är är nu lvl", spelar_stats.p_lvl,"\n")
             spelar_stats.p_lvlpoäng += 1
+            return
  
         }
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
@@ -238,13 +239,13 @@ function rum_typ(){
     let typ = Math.round( Math.random()*10)
     if ([ 4, 10].includes(typ)) {
         let monster_stats = monstrgenerator()
-        spelar_stats = fight( monster_stats)
+        fight(monster_stats)
         if (spelar_stats.p_lvlpoäng == 3) {
             console.log(
                 "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
             typingPrint(
                 "Dina nuvarande stats är", spelar_stats.p_hp, "hp och", spelar_stats.p_str, " str \n")
-            spelar_stats = lvl_poäng()
+             lvl_poäng()
         }
 
     }
@@ -253,11 +254,11 @@ function rum_typ(){
 
     }
     else if ([7, 8].includes(typ)) {
-        spelar_stats = val_kista()
+        val_kista()
 
     }
     else if ([9].includes(typ)) {
-        spelar_stats = fälla()
+        fälla()
 
     }
 
