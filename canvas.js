@@ -129,7 +129,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "lightblack")
+let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
@@ -236,7 +236,7 @@ function kista(){
 function rum_typ(){
 
     let typ = Math.round( Math.random()*10)
-    if ([1, 2, 3, 4, 10].includes(typ)) {
+    if ([ 4, 10].includes(typ)) {
         let monster_stats = monstrgenerator()
         spelar_stats = fight( monster_stats)
         if (spelar_stats.p_lvlpoäng == 3) {
@@ -248,7 +248,7 @@ function rum_typ(){
         }
 
     }
-    else if ([5, 6].includes(typ)) {
+    else if ([5, 6, 1, 2, 3].includes(typ)) {
         console.log("och kommer till ett tomt rum\n")
 
     }
