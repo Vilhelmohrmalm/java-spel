@@ -1,6 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 body {
   background-color: rgb(39, 39, 39);
   display: flex;
+}
+
+h3 {
+  width: 100%;
+}
+
+.avatar {
+  height: 100px;
+  border-bottom-right-radius: 12px;
+  border: 3px solid rgb(42, 33, 33);
+  margin-top: -120px;
+}
+
+.statbox {
+  margin-top: -120px;
+  height: 100px;
+  width: calc(100% - 106px);
+  background-color: aquamarine;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  /* font-family: "Press Start 2P", cursive; */
+}
+
+.stat {
+  width: 40%;
 }
 
 canvas {
@@ -17,7 +48,10 @@ canvas {
   height: 43vw;
   border: 5px solid rgb(99, 63, 63);
   background-color: white;
-  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 #startsida {
