@@ -141,7 +141,7 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
 function slut(){
     document.getElementById("meddelande").innerHTML += ("Game Over")
-    quit()
+    exit()
 }
 // ---------------------------------------- SLUT  ----------------------------------------
 
@@ -187,9 +187,9 @@ function fight(monster_stats){
             spelar_stats.p_lvl += 1
             document.getElementById("meddelande").innerHTML += ("Du är är nu lvl "+ spelar_stats.p_lvl+ "<br/>")
             spelar_stats.p_lvlpoäng += 1
-            if (spelar_stats.p_lvl = 10){
-                spelar_stats.p_hp += 3
-                document.getElementById("adio").src =  "7ds [Instrumental].mp3"
+            if (spelar_stats.p_lvl >= 10){
+                document.getElementById("adio").src =  "musik/7ds [Instrumental].mp3"
+                document.getElementById("body").style.backgroundColor ="white"
                 
             }
             return
