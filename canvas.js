@@ -189,6 +189,8 @@ function fight(monster_stats){
             spelar_stats.p_lvlpoäng += 1
             if (spelar_stats.p_lvl = 10){
                 spelar_stats.p_hp += 3
+                document.getElementById("adio").src =  "7ds [Instrumental].mp3"
+                
             }
             return
  
@@ -501,21 +503,24 @@ function animate() {
     }
 
     if (playerX + playerWidth == 675 && playerY > 198 && playerY < 343) {
+        playerX = 350;
+        playerY = 475;
         rum_typ()
-         playerX = 350;
-         playerY = 475;
+
     }
     
     if (playerX + playerWidth == 25 && playerY > 198 && playerY < 343) {
+        playerX = 350;
+        playerY = 475;
         rum_typ()
-         playerX = 350;
-         playerY = 475;
+
     }
     
     if (playerY == 30 && playerX > 280 && playerX < 420) {
+        playerX = 350;
+        playerY = 475;
         rum_typ()
-         playerX = 350;
-         playerY = 475;
+
     }
 }
 
