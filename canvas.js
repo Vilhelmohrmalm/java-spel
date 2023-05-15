@@ -289,6 +289,7 @@ function rum_typ(){
 
     let typ = Math.round( Math.random()*10)
     if ([ 1, 2, 3, 4, 10].includes(typ)) {
+
         let monster_stats = monstrgenerator()
         fight(monster_stats)
         if (spelar_stats.p_lvlpoäng == 3) {
@@ -300,20 +301,25 @@ function rum_typ(){
 
     }
     else if ([5, 6].includes(typ)) {
+
         document.getElementById("meddelande").innerHTML += ("och kommer till ett tomt rum <br/>")
 
     }
     else if ([7, 8].includes(typ)) {
+
         val_kista()
 
     }
     else if ([9].includes(typ)) {
+
         fälla()
 
     }
 }
     else{
+
         boss_fight()
+
     }
 
 }
