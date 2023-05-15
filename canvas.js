@@ -1,6 +1,8 @@
 
 // ---------------------------- klasser och stat generatorer--------------------------------------------//
 
+ document.getElementById("meddelande").innerHTML =
+
 
 spelar_stats = "";
 
@@ -11,7 +13,7 @@ function statgen(a, b) {
 
 
 
-function vapengenerator(spelar_stats) {
+function vapengenerator() {
     if (spelar_stats.p_lvl < 10) {
         let Svärd = new Vapen(statgen(0, 1), statgen(1, 2), "ett Svärd")
         let Sköld = new Vapen(statgen(1, 2), statgen(0, 0), "en Sköld")
@@ -138,7 +140,7 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 // ---------------------------------------- SLUT  ----------------------------------------
 
 function slut(){
-    console.log("Game Over")
+    document.getElementById("meddelande").innerHTML += ("Game Over")
     quit()
 }
 // ---------------------------------------- SLUT  ----------------------------------------
@@ -151,18 +153,18 @@ function lvl_poäng(){
 
     if (["H", "h", "hp"].includes(val)){
         spelar_stats.p_hp += 1
-        console.log("Din hp är nu", spelar_stats.p_hp, "\n")
+        document.getElementById("meddelande").innerHTML += ("Din hp är nu "+ spelar_stats.p_hp+ "<br/>")
         spelar_stats.p_lvlpoäng = 0
 
     }
     else if (["S", "s", "str"].includes(val)){
         spelar_stats.p_str += 1
-        console.log('Din str är nu', spelar_stats.p_str, "\n")
+        document.getElementById("meddelande").innerHTML += ('Din str är nu '+ spelar_stats.p_str+"<br/>")
         spelar_stats.p_lvlpoäng = 0
 
     }
     else{
-        console.log("Din sopa välj ett av alternativen\n")
+        document.getElementById("meddelande").innerHTML += ("Din sopa välj ett av alternativen <br/>")
         return lvl_poäng()
     }
 
@@ -174,23 +176,26 @@ function lvl_poäng(){
 
 function fight(monster_stats){
 
-    console.log(
-        "och du stöter på en", monster_stats.m_namn, "med", monster_stats.m_hp, "hp och", monster_stats.m_str, "str\n")
+    document.getElementById("meddelande").innerHTML +=
+        "och du stöter på en " + monster_stats.m_namn + " med " + monster_stats.m_hp + " hp och " + monster_stats.m_str + " str <br/>"
 
     while (monster_stats.m_hp > 0) {
 
         if (spelar_stats.p_str + spelar_stats.vapen.v_str >= monster_stats.m_hp){
-            console.log("Du besegrade monstret\n")
-            console.log("Du har", spelar_stats.p_hp, "hp kvar\n")
+            document.getElementById("meddelande").innerHTML += ("Du besegrade monstret <br/>")
+            document.getElementById("meddelande").innerHTML += ("Du har "+ spelar_stats.p_hp +" hp kvar <br/>")
             spelar_stats.p_lvl += 1
-            console.log("Du är är nu lvl", spelar_stats.p_lvl,"\n")
+            document.getElementById("meddelande").innerHTML += ("Du är är nu lvl "+ spelar_stats.p_lvl+ "<br/>")
             spelar_stats.p_lvlpoäng += 1
+            if (spelar_stats.p_lvl = 10){
+                spelar_stats.p_hp += 3
+            }
             return
  
         }
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
-            console.log(
-                "Du dog\nDu nådde lvl", spelar_stats.p_lvl,"\nMåste vara skill issue\n")
+            document.getElementById("meddelande").innerHTML += ("Du dog <br/>")
+            document.getElementById("meddelande").innerHTML += ("Du nådde lvl "+ spelar_stats.p_lvl+ " Måste vara skill issue <br/>")
             slut()
         }
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp){
@@ -201,6 +206,44 @@ function fight(monster_stats){
     }
 }
 
+function boss_fight(){
+    document.getElementById("meddelande").innerHTML += ("Nu har du nått sista kammaren men där väntar Taurus <br/>") 
+    document.getElementById("meddelande").innerHTML += ("Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10 <br/>")
+   let m_hp = 30
+    let m_str = 10
+    let val = prompt("S = sloss mot Taurus\nL = ge upp\n")
+    while (m_hp == 30){
+        if (["S", "s", "sloss", "sloss mot Taurus"].includes(val)){
+            while (m_hp > 0){
+                if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp){
+                    document.getElementById("meddelande").innerHTML += (
+                        "Du besegrade tarus och kan änligen lämna labyrinten <br/>")
+                    }
+                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+                    document.getElementById("meddelande").innerHTML += (
+                        "Taurus dödade dig, Måste vara skill issue <br/>")
+                    slut()
+                }
+                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp){
+                    m_hp = m_hp -
+                        spelar_stats.p_str - spelar_stats.vapen.v_str
+                    spelar_stats.p_hp = spelar_stats.p_hp -
+                        m_str + spelar_stats.vapen.v_hp
+                }
+            }
+        }
+        else if  (["L", "l", "ge upp"].includes(val)){
+            document.getElementById("meddelande").innerHTML += (
+                "Du gav upp och dog på lvl 30, Måst vara skill issue <br/>")
+            slut()
+            }
+        else{
+            document.getElementById("meddelande").innerHTML += ("Din sopa välj ett av alternativen <br/>")
+        }
+    }
+}
+
+
 // ---------------------------------------- FIGHT ----------------------------------------
 
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
@@ -209,48 +252,53 @@ function kista(){
 
     let vapen=vapengenerator()
 
-    console.log(vapen.v_namn,"\n det har en hp på", vapen.v_hp, "och en styrka på",vapen.v_str,"\n")
+    document.getElementById("meddelande").innerHTML += (vapen.v_namn+ " det har en hp på "+ vapen.v_hp, " och en styrka på "+vapen.v_str+"<br/>")
 
-    console.log(
-        "Du måste ta bort ditt nuvarande vapen för att ta det nya\n")
+    document.getElementById("meddelande").innerHTML += (
+        "Du måste ta bort ditt nuvarande vapen för att ta det nya <br/>")
 
-    console.log(
-        "Du har", spelar_stats.vapen.v_namn, "med", spelar_stats.vapen.v_hp," hp och", spelar_stats.vapen.v_str, "str\n ")
-    while (true){
+        document.getElementById("meddelande").innerHTML += (
+        "Du har "+ spelar_stats.vapen.v_namn+ " med "+ spelar_stats.vapen.v_hp+" hp och "+ spelar_stats.vapen.v_str+ " str <br/>")
+    
         let svar = prompt(
-            "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat \n")
+            "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat ")
         if (svar == "1"){
-            console.log("Du har nu ett nytt vapen i din ryggsäck\n")
+            document.getElementById("meddelande").innerHTML += ("Du har nu ett nytt vapen i din ryggsäck <br/>")
             spelar_stats.vapen = vapen
 
         }
         else{
-            console.log(
-                "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans\n")
+            document.getElementById("meddelande").innerHTML += (
+                "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
 
         }
-    }
+    
 }
 
 
 
 function rum_typ(){
 
+    if (spelar_stats.p_lvl <= 30){
+
+    if ( [10, 20].includes(spelar_stats.p_lvl)){
+            spelar_stats.p_hp += 3 
+    }
+
     let typ = Math.round( Math.random()*10)
-    if ([ 4, 10].includes(typ)) {
+    if ([ 1, 2, 3, 4, 10].includes(typ)) {
         let monster_stats = monstrgenerator()
         fight(monster_stats)
         if (spelar_stats.p_lvlpoäng == 3) {
-            console.log(
-                "Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. \n")
-            typingPrint(
-                "Dina nuvarande stats är", spelar_stats.p_hp, "hp och", spelar_stats.p_str, " str \n")
+            document.getElementById("meddelande").innerHTML =("Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. <br/>")
+            document.getElementById("meddelande").innerHTML =(
+                "Dina nuvarande stats är "+ spelar_stats.p_hp+ " hp och "+ spelar_stats.p_str+ " str <br/>")
              lvl_poäng()
         }
 
     }
-    else if ([5, 6, 1, 2, 3].includes(typ)) {
-        console.log("och kommer till ett tomt rum\n")
+    else if ([5, 6].includes(typ)) {
+        document.getElementById("meddelande").innerHTML += ("och kommer till ett tomt rum <br/>")
 
     }
     else if ([7, 8].includes(typ)) {
@@ -261,6 +309,10 @@ function rum_typ(){
         fälla()
 
     }
+}
+    else{
+        boss_fight()
+    }
 
 }
 
@@ -268,13 +320,14 @@ function rum_typ(){
 function fälla(){
     if (spelar_stats.p_hp > 1){
         spelar_stats.p_hp -= 1
-        console.log(
-            "där du klev i en fälla, du har nu", spelar_stats.p_hp," hp kvar\n")
+        document.getElementById("meddelande").innerHTML += (
+            "där du klev i en fälla, du har nu "+ spelar_stats.p_hp+" hp kvar <br/>")
 
     }
     else{
-        typingPrint(
-            "där du dör i en fälla\n Du nådde lvl", spelar_stats.p_lvl,"\n Måste vara skill issue\n")
+        document.getElementById("meddelande").innerHTML += ("där du dör i en fälla <br/>")
+        document.getElementById("meddelande").innerHTML += ("Du nådde lvl "+ spelar_stats.p_lvl+"<br/>") 
+        document.getElementById("meddelande").innerHTML += (" Måste vara skill issue <br/>")
         slut()
     }
 }
@@ -288,17 +341,18 @@ function val_kista(){
         "och hittar en kista. Vad vill du göra?\n Ö = öppna kista\n L = lämna kistan\n")
 
     if (["Ö", "öppna", "ö", "öppna kista"].includes(val)){
-        console.log(
-            "du öppnar kistan och i den hittar du ")
+        document.getElementById("meddelande").innerHTML += (
+            "du öppnar kistan och i den hittar du <br/>")
         kista()
 
     }
     else if (["L", "lämna kistan", "lämna", "l"].includes(val)){
-        console.log("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den.\nKistans inehåll kommer att förbli ett mysterium för alltid.\n")
+        document.getElementById("meddelande").innerHTML += ("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den. <br/>")
+        document.getElementById("meddelande").innerHTML += ("Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
 
     }
     else{
-        console.log("din sopa välj ett av alternativen")
+        document.getElementById("meddelande").innerHTML += ("din sopa välj ett av alternativen <br/>")
         return val_kista()
     }
 }

@@ -137,3 +137,10 @@ canvas {
   scale: 1.1;
   transition: 0.5s;
 }
+
+#meddelande {
+  overflow: scroll;
+  width: 25vw;
+  font-size: 1vw;
+  height: 10vw;
+}
