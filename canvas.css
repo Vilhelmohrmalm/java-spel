@@ -36,7 +36,7 @@ h3 {
 
 canvas {
   border: 2px solid black;
-  background-image: url(pixil-frame-1.png);
+  background-image: url(bilder/pixil-frame-1.png);
   background-size: cover;
   height: 43.5vw;
   width: 75vw;
