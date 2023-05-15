@@ -131,7 +131,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(1, 1, 0, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
@@ -140,8 +140,7 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 // ---------------------------------------- SLUT  ----------------------------------------
 
 function slut(){
-    document.getElementById("meddelande").innerHTML += ("Game Over")
-    exit()
+
 }
 // ---------------------------------------- SLUT  ----------------------------------------
 
@@ -188,7 +187,7 @@ function fight(monster_stats){
             document.getElementById("meddelande").innerHTML += ("Du är är nu lvl "+ spelar_stats.p_lvl+ "<br/>")
             spelar_stats.p_lvlpoäng += 1
             if (spelar_stats.p_lvl >= 10){
-                document.getElementById("adio").src =  "musik/7ds [Instrumental].mp3"
+                document.getElementById("audio").src =  "musik/7ds [Instrumental].mp3"
                 document.getElementById("body").style.backgroundColor ="white"
                 
             }
