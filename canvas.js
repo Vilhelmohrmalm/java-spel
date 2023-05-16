@@ -187,7 +187,7 @@ function fight(monster_stats) {
             spelar_stats.p_lvl += 1
             document.getElementById("meddelande").innerHTML += ("Du är är nu lvl " + spelar_stats.p_lvl + "<br/>")
             spelar_stats.p_lvlpoäng += 1
-            if (spelar_stats.p_lvl = 10) {
+            if (spelar_stats.p_lvl == 10) {
                 spelar_stats.p_hp += 3
                 document.getElementById("adio").src = "7ds [Instrumental].mp3"
 
