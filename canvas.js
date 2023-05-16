@@ -9,7 +9,27 @@ let ner = "ArrowDown";
 
 spelar_stats = "";
 
+function kontroll(){
+    vänster = document.getElementById("vänster").value
+    höger = document.getElementById("höger").value
+    up = document.getElementById("up").value
+    ner = document.getElementById("ner").value;
 
+
+    document.getElementById("vänster").value = none
+    document.getElementById("höger").value = none
+    document.getElementById("up").value = none
+    document.getElementById("ner").value = none
+
+}
+
+function återställ(){
+    vänster = "ArrowLeft";
+    höger = "ArrowRight";
+    up = "ArrowUp";
+    ner = "ArrowDown";
+
+}
 
 function inställningar(){
     var inst = document.getElementById("inst");
@@ -495,16 +515,16 @@ document.addEventListener("keydown", (e) => {
 
 document.addEventListener("keyup", (e) => {
     switch (e.key) {
-        case "ArrowLeft":
+        case vänster:
             directions.left = false;
             break;
-        case "ArrowRight":
+        case höger:
             directions.right = false;
             break;
-        case "ArrowUp":
+        case up:
             directions.up = false;
             break;
-        case "ArrowDown":
+        case ner:
             directions.down = false;
             break;
         default:
