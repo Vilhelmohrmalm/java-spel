@@ -29,11 +29,19 @@ h3 {
   width: 2vw;
 }
 
+.inställning2 {
+  width: 4vw;
+}
+
 .inställningknapp {
   background-color: white;
   border: none;
   margin-left: 22vw;
   margin-top: 1vw;
+}
+
+.tillbaka {
+  background-color: black;
 }
 
 .totstat {
