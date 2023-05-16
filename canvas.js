@@ -510,7 +510,7 @@ function animate() {
 
     }
 
-    if (playerX + playerWidth == 25 && playerY > 198 && playerY < 343) {
+    if (playerX + playerWidth == 45 && playerY > 198 && playerY < 343) {
         playerX = 350;
         playerY = 475;
         rum_typ()
