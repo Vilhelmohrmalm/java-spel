@@ -2,9 +2,18 @@
 // ---------------------------- klasser och stat generatorer--------------------------------------------//
 
 
-
+let vänster = "ArrowLeft";
+let höger = "ArrowRight";
+let up = "ArrowUp";
+let ner = "ArrowDown";
 
 spelar_stats = "";
+
+
+
+function inställningar(){
+    document.getElementById("inst").style.display = "block"
+}
 
 
 function statgen(a, b) {
@@ -152,8 +161,8 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 // ---------------------------------------- SLUT  ----------------------------------------
 
 function slut() {
-    document.getElementById("meddelande").innerHTML += ("Game Over")
-    quit()
+    document.getElementById("avslutning").style.display = "block"
+    
 }
 // ---------------------------------------- SLUT  ----------------------------------------
 
@@ -201,8 +210,15 @@ function fight(monster_stats) {
             spelar_stats.p_lvlpoäng += 1
             if (spelar_stats.p_lvl == 10) {
                 spelar_stats.p_hp += 3
-                document.getElementById("audio").src = "7ds [Instrumental].mp3"
+                document.getElementById("audio").src = " ../musik/7ds [Instrumental].mp3"
+                document.getElementById("body").style.backgroundColor = "green"
+            }
 
+            else if (spelar_stats.p_lvl == 20){
+                spelar_stats.p_hp +=3
+                document.getElementById("audio").src = "musik/Vickeblanka - Black Rover (Instrumental).mp3"
+                document.getElementById("body").style.backgroundColor = "navy"
+                
             }
 
             return
@@ -222,6 +238,7 @@ function fight(monster_stats) {
 }
 
 function boss_fight() {
+    document.getElementById("audio").src = "musik/BC OP1.mp3"
     document.getElementById("meddelande").innerHTML += ("Nu har du nått sista kammaren men där väntar Taurus <br/>")
     document.getElementById("meddelande").innerHTML += ("Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10 <br/>")
     let m_hp = 30
@@ -452,16 +469,16 @@ let directions = {
 // ------------ Player movement ------------
 document.addEventListener("keydown", (e) => {
     switch (e.key) {
-        case "ArrowLeft":
+        case vänster:
             directions.left = true;
             break;
-        case "ArrowRight":
+        case höger:
             directions.right = true;
             break;
-        case "ArrowUp":
+        case up:
             directions.up = true;
             break;
-        case "ArrowDown":
+        case ner:
             directions.down = true;
             break;
         default:

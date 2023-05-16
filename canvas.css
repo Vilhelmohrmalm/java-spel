@@ -12,6 +12,8 @@ body {
   position: absolute;
   align-items: center;
   display: none;
+  top: 0;
+  left: 0;
 }
 
 .gameover {
@@ -21,6 +23,17 @@ body {
 
 h3 {
   width: 100%;
+}
+
+.inställning {
+  width: 2vw;
+}
+
+.inställningknapp {
+  background-color: white;
+  border: none;
+  margin-left: 22vw;
+  margin-top: 1vw;
 }
 
 .totstat {
@@ -166,4 +179,19 @@ canvas {
   font-size: 1vw;
   height: 10vw;
   top: 33vw;
+}
+
+.inställningknapp:hover {
+  scale: 1.1;
+  transition: 2s;
+}
+
+#inst {
+  width: 100vw;
+  height: 100vw;
+  background-color: black;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
 }

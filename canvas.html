@@ -9,6 +9,7 @@
     <title>Canvas Game</title>
   </head>
   <body id="body">
+    <div id="inst"></div>
     <div id="avslutning">
       <div class="gameover">Game Over</div>
       <a class="start" src="canvas.html">Starta Om</a>
@@ -48,7 +49,9 @@
     </div>
     <canvas id="gameCanvas"></canvas>
     <div class="menu">
+
       <div class="statmenu">
+        <button class="inställningknapp" onclick="inställningar()"><img src="bilder/inställningsknapp.png" class="inställning"></button>
         <h3>Dina Stats</h3>
         <div class="totstat">
         <img class="avatar" id="p_bild" src="hje" />
@@ -69,13 +72,15 @@
           <div class="stat" id="m_styrka"></div>
           <div class="stat" id="m_hälsa"></div>
         </div>
-      </div>
+        </div>
         <p id="meddelande"></p>
       </div>
     <div/>
+
   </body>
   <audio
     id="audio"
     src="musik/LiSA (織部 里沙) - Crossing Field (minus).mp3"
+
   ></audio>
 </html>
