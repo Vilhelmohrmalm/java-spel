@@ -23,15 +23,17 @@ h3 {
   width: 100%;
 }
 
+.totstat {
+  display: flex;
+}
+
 .avatar {
   height: 100px;
   border-bottom-right-radius: 12px;
   border: 3px solid rgb(42, 33, 33);
-  margin-top: -120px;
 }
 
 .statbox {
-  margin-top: -120px;
   height: 100px;
   width: calc(100% - 106px);
   background-color: aquamarine;
@@ -63,6 +65,12 @@ canvas {
   border: 5px solid rgb(99, 63, 63);
   background-color: white;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.statmenu {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
@@ -157,4 +165,5 @@ canvas {
   width: 25vw;
   font-size: 1vw;
   height: 10vw;
+  top: 33vw;
 }

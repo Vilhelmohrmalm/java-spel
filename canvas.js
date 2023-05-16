@@ -1,10 +1,10 @@
 
 // ---------------------------- klasser och stat generatorer--------------------------------------------//
 
-document.getElementById("meddelande").innerHTML =
 
 
-    spelar_stats = "";
+
+spelar_stats = "";
 
 
 function statgen(a, b) {
@@ -94,10 +94,14 @@ function monstrgenerator() {
         let Goblin = new Monster(statgen(3, 7), statgen(3, 8), "Goblin")
         if (monster == 1) {
             monster_stats = (Slime);
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Goblin)
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats)
         }
     }
@@ -107,10 +111,14 @@ function monstrgenerator() {
         let Golem = new Monster(statgen(12, 17), statgen(3, 3), "Golem")
         if (monster == 1) {
             monster_stats = (Lycan);
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Golem)
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats)
         }
     }
@@ -119,10 +127,14 @@ function monstrgenerator() {
         let Orc = new Monster(statgen(9, 15), statgen(6, 10), "Orc")
         if (monster == 1) {
             monster_stats = (Undead);
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Orc)
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             return (monster_stats)
         }
     }
@@ -378,6 +390,8 @@ function assa() {
     let hero = Assasin;
     c.fillStyle = "black";
     spelar_stats = hero
+
+
     animate();
 }
 
@@ -474,6 +488,13 @@ document.addEventListener("keyup", (e) => {
 // ------------ Animation ------------
 function animate() {
 
+    document.getElementById("hälsa").innerHTML = ("Hp: "+spelar_stats.p_hp)
+    document.getElementById("styrka").innerHTML = ("Str: "+spelar_stats.p_str)
+    document.getElementById("lvl").innerHTML = ("Lvl: "+spelar_stats.p_lvl)
+    document.getElementById("lvl-p").innerHTML = ("Lvl_p: "+spelar_stats.p_lvlpoäng)
+    document.getElementById("vapen-s").innerHTML = ("V_Str "+spelar_stats.vapen.v_str)
+    document.getElementById("vapen-h").innerHTML = ("V_Hp "+spelar_stats.vapen.v_hp)
+    document.getElementById("vapen-typ").innerHTML = ("Vapen: "+spelar_stats.vapen.v_namn)
 
     let myAudio = document.querySelector('#audio')
     myAudio.play()

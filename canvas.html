@@ -48,21 +48,31 @@
     </div>
     <canvas id="gameCanvas"></canvas>
     <div class="menu">
-      <h3>Dina Stats</h3>
-      <img class="avatar" src="bilder/barb.jpg" />
-      <div class="statbox text">
-        <div class="stat" id="lvl">lvl: 0</div>
-        <div class="stat" id="lvl-p">lvl-poäng: ""</div>
-        <div class="stat" id="styrka">str: ""</div>
-        <div class="stat" id="hälsa">hp: ""</div>
-        <div class="stat" id="vapen-s">vapen-str: ""</div>
-        <div class="stat" id="vapen-h">vapen-hp: ""</div>
-        <div class="stat" id="vapen-typ">vapen: ""</div>
+      <div class="statmenu">
+        <h3>Dina Stats</h3>
+        <div class="totstat">
+        <img class="avatar" src="bilder/barb.jpg" />
+        <div class="statbox text">
+          <div class="stat" id="lvl"></div>
+          <div class="stat" id="lvl-p"></div>
+          <div class="stat" id="styrka"></div>
+          <div class="stat" id="hälsa"></div>
+          <div class="stat" id="vapen-s"></div>
+          <div class="stat" id="vapen-h"></div>
+          <div class="stat" id="vapen-typ"></div>
+        </div>
+        </div>
+        <h4>Monster Stats</h4>
+        <div class="totstat">
+        <img class="avatar" src="bilder/assa.jpg" />
+        <div class="statbox text">
+          <div class="stat" id="m_styrka"></div>
+          <div class="stat" id="m_hälsa"></div>
+        </div>
       </div>
-      <img class="avatar" src="bilder/assa.jpg" />
-      <div class="statbox text"></div>
-      <p id="meddelande"></p>
-    </div>
+        <p id="meddelande"></p>
+      </div>
+    <div/>
   </body>
   <audio
     id="audio"
