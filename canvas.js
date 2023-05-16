@@ -201,7 +201,7 @@ function fight(monster_stats) {
             spelar_stats.p_lvlpoäng += 1
             if (spelar_stats.p_lvl == 10) {
                 spelar_stats.p_hp += 3
-                document.getElementById("adio").src = "7ds [Instrumental].mp3"
+                document.getElementById("audio").src = "7ds [Instrumental].mp3"
 
             }
 
@@ -390,6 +390,7 @@ function assa() {
     let hero = Assasin;
     c.fillStyle = "black";
     spelar_stats = hero
+    document.getElementById("p_bild").src = "../bilder/assa.jpg"
 
 
     animate();
@@ -400,6 +401,7 @@ function barb() {
     val.style.display = "none"
     let hero = Barb;
     spelar_stats = hero
+    document.getElementById("p_bild").src = "../bilder/barb.jpg"
     animate();
 }
 
@@ -408,6 +410,7 @@ function knig() {
     val.style.display = "none"
     let hero = Knight;
     spelar_stats = hero
+    document.getElementById("p_bild").src = "../bilder/knig.jpg"
 
     animate();
 }
