@@ -12,7 +12,14 @@ spelar_stats = "";
 
 
 function inställningar(){
-    document.getElementById("inst").style.display = "block"
+    let inst = document.getElementById("inst")
+    if (inst.style.display == "block"){
+        inst.style.display = "none"
+    }
+
+    else {
+        inst.style.display = "block"
+    }
 }
 
 
