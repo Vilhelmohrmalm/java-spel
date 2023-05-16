@@ -217,7 +217,7 @@ function fight(monster_stats) {
             if (spelar_stats.p_lvl == 10) {
                 spelar_stats.p_hp += 3
                 document.getElementById("audio").src = " ../musik/7ds [Instrumental].mp3"
-                document.getElementById("body").style.backgroundColor = "cadetblue"
+                document.getElementById("body").style.backgroundColor = "darkgreen"
             }
 
             else if (spelar_stats.p_lvl == 20){
@@ -245,6 +245,7 @@ function fight(monster_stats) {
 
 function boss_fight() {
     document.getElementById("audio").src = "musik/BC OP1.mp3"
+    document.getElementById("body").style.backgroundColor = "maroon"
     document.getElementById("meddelande").innerHTML += ("Nu har du nått sista kammaren men där väntar Taurus <br/>")
     document.getElementById("meddelande").innerHTML += ("Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10 <br/>")
     let m_hp = 30
