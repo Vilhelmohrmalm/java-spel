@@ -180,7 +180,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(1, 1, 0, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
