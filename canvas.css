@@ -51,6 +51,37 @@ h3 {
   margin: 1vw;
 }
 
+#val_kista {
+  display: none;
+}
+
+#val_vapen {
+  display: none;
+}
+
+.val {
+  position: absolute;
+  align-self: center;
+  margin-left: 27vw;
+  width: 20vw;
+  height: 15vw;
+  background-color: black;
+  border: solid white;
+  color: white;
+}
+
+.kistaknapp {
+  font-size: 1.5vw;
+}
+
+.öppna {
+  margin-left: 2.5vw;
+}
+
+.lämna {
+  margin-left: 2vw;
+}
+
 .instknapp {
   color: black;
   margin-left: 47vw;

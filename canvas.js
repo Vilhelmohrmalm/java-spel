@@ -7,6 +7,8 @@ let höger = "ArrowRight";
 let up = "ArrowUp";
 let ner = "ArrowDown";
 
+vapen = "";
+
 spelar_stats = "";
 
 function kontroll(){
@@ -178,9 +180,11 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 9, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(1, 1, 0, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
+
+
 
 // ---------------------------- klasser och stat generatorer--------------------------------------------//
 
@@ -188,6 +192,7 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
 function slut() {
     document.getElementById("avslutning").style.display = "block"
+    
     
 }
 // ---------------------------------------- SLUT  ----------------------------------------
@@ -307,6 +312,19 @@ function boss_fight() {
 
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
+function byt_ut(){
+    document.getElementById("meddelande").innerHTML += ("Du har nu ett nytt vapen i din ryggsäck <br/>")
+    spelar_stats.vapen = vapen
+    document.getElementById("val_vapen").style.display = "none"
+}
+
+function lämna_vapen(){
+    document.getElementById("val_vapen").style.display = "none"
+    document.getElementById("meddelande").innerHTML += (
+        "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
+}
+
+
 function kista() {
 
     let vapen = vapengenerator()
@@ -331,6 +349,8 @@ function kista() {
             "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
 
     }
+
+    
 
 }
 
@@ -361,7 +381,7 @@ function rum_typ() {
 
         }
         else if ([7, 8].includes(typ)) {
-            val_kista()
+            document.getElementById("val_kista").style.display = " block"
 
         }
         else if ([9].includes(typ)) {
@@ -394,6 +414,22 @@ function fälla() {
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
+
+
+
+function öppna(){
+    document.getElementById("val_kista").style.display = "none"
+    vapen = vapengenerator()
+    document.getElementById("vapentext").innerHTML = ("Du finner en "+ vapen.v_namn+ " med hp "+ vapen.v_hp+ " och str "+ vapen.v_str+"<br/> Vad vill du göra?")
+    document.getElementById("val_vapen").style.display = "block"
+    
+}
+
+function lämna(){
+    document.getElementById("val_kista").style.display = "none"
+    document.getElementById("meddelande").innerHTML += ("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den. <br/>")
+    document.getElementById("meddelande").innerHTML += ("Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
+}
 
 function val_kista() {
     let val = prompt(
@@ -435,8 +471,6 @@ function assa() {
     c.fillStyle = "black";
     spelar_stats = hero
     document.getElementById("p_bild").src = "../bilder/assa.jpg"
-
-
     animate();
 }
 

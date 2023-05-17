@@ -9,6 +9,16 @@
     <title>Canvas Game</title>
   </head>
   <body id="body">
+    <div id="val_kista" class="val">
+      <div class="insttext"> Du hittar en kista. <br/> Vad vill du göra?</div>
+      <button class="öppna kistaknapp" onclick="öppna()">Öppna</button>
+      <button class="lämna kistaknapp" onclick="lämna()">Lämna</button>
+    </div>
+    <div id="val_vapen" class="val">
+      <div  id="vapentext" class="insttext"> </div>
+      <button class="öppna kistaknapp" onclick="byt_ut()">Byt ut</button>
+      <button class="lämna kistaknapp" onclick="lämna_vapen()">Lämna</button>
+    </div>
     <div id="inst">
       <button class="inställningknapp tillbaka" onclick="inställningar()">
         <img  class="inställning2" src="bilder/kryss.png">
@@ -35,7 +45,7 @@
     </div>
     <div id="avslutning">
       <div class="gameover">Game Over</div>
-      <a class="start" src="canvas.html">Starta Om</a>
+      <button><a class="start" href="canvas.html">Starta Om</a></button>
     </div>
     <div id="startsida">
       <div class="förklaring">
