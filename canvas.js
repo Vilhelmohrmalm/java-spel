@@ -325,34 +325,6 @@ function lämna_vapen(){
 }
 
 
-function kista() {
-
-    let vapen = vapengenerator()
-
-    document.getElementById("meddelande").innerHTML += (vapen.v_namn + " det har en hp på " + vapen.v_hp, " och en styrka på " + vapen.v_str + "<br/>")
-
-    document.getElementById("meddelande").innerHTML += (
-        "Du måste ta bort ditt nuvarande vapen för att ta det nya <br/>")
-
-    document.getElementById("meddelande").innerHTML += (
-        "Du har " + spelar_stats.vapen.v_namn + " med " + spelar_stats.vapen.v_hp + " hp och " + spelar_stats.vapen.v_str + " str <br/>")
-
-    let svar = prompt(
-        "Om du vill byta det nya vapnet mot det gammla vapnet skriv in 1 annars skriv något annat ")
-    if (svar == "1") {
-        document.getElementById("meddelande").innerHTML += ("Du har nu ett nytt vapen i din ryggsäck <br/>")
-        spelar_stats.vapen = vapen
-
-    }
-    else {
-        document.getElementById("meddelande").innerHTML += (
-            "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
-
-    }
-
-    
-
-}
 
 
 
@@ -431,26 +403,7 @@ function lämna(){
     document.getElementById("meddelande").innerHTML += ("Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
 }
 
-function val_kista() {
-    let val = prompt(
-        "och hittar en kista. Vad vill du göra?\n Ö = öppna kista\n L = lämna kistan\n")
 
-    if (["Ö", "öppna", "ö", "öppna kista"].includes(val)) {
-        document.getElementById("meddelande").innerHTML += (
-            "du öppnar kistan och i den hittar du <br/>")
-        kista()
-
-    }
-    else if (["L", "lämna kistan", "lämna", "l"].includes(val)) {
-        document.getElementById("meddelande").innerHTML += ("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den. <br/>")
-        document.getElementById("meddelande").innerHTML += ("Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
-
-    }
-    else {
-        document.getElementById("meddelande").innerHTML += ("din sopa välj ett av alternativen <br/>")
-        return val_kista()
-    }
-}
 
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
