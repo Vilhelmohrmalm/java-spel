@@ -199,28 +199,20 @@ function slut() {
 
 // ---------------------------------------- lvl poäng  ----------------------------------------
 
-function lvl_poäng() {
-
-    let val = prompt("Vilken vill du höja\n H = hp\n S = str\n")
-
-    if (["H", "h", "hp"].includes(val)) {
-        spelar_stats.p_hp += 1
-        document.getElementById("meddelande").innerHTML += ("Din hp är nu " + spelar_stats.p_hp + "<br/>")
-        spelar_stats.p_lvlpoäng = 0
-
-    }
-    else if (["S", "s", "str"].includes(val)) {
-        spelar_stats.p_str += 1
-        document.getElementById("meddelande").innerHTML += ('Din str är nu ' + spelar_stats.p_str + "<br/>")
-        spelar_stats.p_lvlpoäng = 0
-
-    }
-    else {
-        document.getElementById("meddelande").innerHTML += ("Din sopa välj ett av alternativen <br/>")
-        return lvl_poäng()
-    }
-
+function Hp(){
+    spelar_stats.p_hp += 1
+    spelar_stats.p_lvlpoäng = 0
+    document.getElementById("lvl_poäng").style.display = "none"
 }
+
+function Str(){
+    spelar_stats.p_str += 1
+    spelar_stats.p_lvlpoäng = 0
+    document.getElementById("lvl_poäng").style.display = "none"
+}
+
+
+
 
 // ---------------------------------------- lvl poäng  ----------------------------------------
 
@@ -332,19 +324,14 @@ function rum_typ() {
 
     if (spelar_stats.p_lvl <= 30) {
 
-        if ([10, 20].includes(spelar_stats.p_lvl)) {
-            spelar_stats.p_hp += 3
-        }
+
 
         let typ = Math.round(Math.random() * 10)
         if ([1, 2, 3, 4, 10].includes(typ)) {
             let monster_stats = monstrgenerator()
             fight(monster_stats)
             if (spelar_stats.p_lvlpoäng == 3) {
-                document.getElementById("meddelande").innerHTML = ("Du har nu fått en lvl uppgradering som du kan använda för att höja en valfri stat med 1. <br/>")
-                document.getElementById("meddelande").innerHTML = (
-                    "Dina nuvarande stats är " + spelar_stats.p_hp + " hp och " + spelar_stats.p_str + " str <br/>")
-                lvl_poäng()
+                document.getElementById("lvl_poäng").style.display = "block"
             }
 
         }

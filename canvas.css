@@ -59,6 +59,10 @@ h3 {
   display: none;
 }
 
+#lvl_poäng {
+  display: none;
+}
+
 .val {
   position: absolute;
   align-self: center;
