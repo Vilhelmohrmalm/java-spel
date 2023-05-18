@@ -16,6 +16,17 @@ body {
   left: 0;
 }
 
+#vinst {
+  background-color: black;
+  height: 100vw;
+  width: 100vw;
+  position: absolute;
+  align-items: center;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
 .gameover {
   color: white;
   font-size: 5vw;

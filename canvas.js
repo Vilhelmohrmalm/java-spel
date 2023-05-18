@@ -180,7 +180,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(30, 30, 29, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
@@ -221,7 +221,7 @@ function Str(){
 function fight(monster_stats) {
 
     document.getElementById("meddelande").innerHTML +=
-        "och du stöter på en " + monster_stats.m_namn + " med " + monster_stats.m_hp + " hp och " + monster_stats.m_str + " str <br/>"
+        ("och du stöter på en " + monster_stats.m_namn + " med " + monster_stats.m_hp + " hp och " + monster_stats.m_str + " str <br/>")
 
     while (monster_stats.m_hp > 0) {
 
@@ -274,8 +274,7 @@ function boss_fight() {
    
     while (m_hp > 0) {
         if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
-            document.getElementById("meddelande").innerHTML += (
-                "Du besegrade tarus och kan änligen lämna labyrinten <br/>")
+            document.getElementById("vinst").style.display = "block"
         }
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
             document.getElementById("meddelande").innerHTML += (
@@ -314,7 +313,7 @@ function lämna_vapen(){
 
 function rum_typ() {
 
-    if (spelar_stats.p_lvl <= 30) {
+    if (spelar_stats.p_lvl < 30) {
 
 
 
