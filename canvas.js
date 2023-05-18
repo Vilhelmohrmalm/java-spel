@@ -260,41 +260,33 @@ function fight(monster_stats) {
     }
 }
 
+function ge_upp(){
+    document.getElementById("val_taurus").style.display = "none"
+    slut()
+}
+
 function boss_fight() {
-    document.getElementById("audio").src = "musik/BC OP1.mp3"
-    document.getElementById("body").style.backgroundColor = "maroon"
-    document.getElementById("meddelande").innerHTML += ("Nu har du nått sista kammaren men där väntar Taurus <br/>")
-    document.getElementById("meddelande").innerHTML += ("Hans massiva slimekapacitet har gett honom en hp på 30 och en styrka på 10 <br/>")
+
+    document.getElementById("val_taurus").style.display = "none"
     let m_hp = 30
     let m_str = 10
-    let val = prompt("S = sloss mot Taurus\nL = ge upp\n")
-    while (m_hp == 30) {
-        if (["S", "s", "sloss", "sloss mot Taurus"].includes(val)) {
-            while (m_hp > 0) {
-                if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
-                    document.getElementById("meddelande").innerHTML += (
-                        "Du besegrade tarus och kan änligen lämna labyrinten <br/>")
-                }
-                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-                    document.getElementById("meddelande").innerHTML += (
-                        "Taurus dödade dig, Måste vara skill issue <br/>")
-                    slut()
-                }
-                else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-                    m_hp = m_hp -
-                        spelar_stats.p_str - spelar_stats.vapen.v_str
-                    spelar_stats.p_hp = spelar_stats.p_hp -
-                        m_str + spelar_stats.vapen.v_hp
-                }
-            }
-        }
-        else if (["L", "l", "ge upp"].includes(val)) {
+
+   
+    while (m_hp > 0) {
+        if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
             document.getElementById("meddelande").innerHTML += (
-                "Du gav upp och dog på lvl 30, Måst vara skill issue <br/>")
+                "Du besegrade tarus och kan änligen lämna labyrinten <br/>")
+        }
+        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+            document.getElementById("meddelande").innerHTML += (
+                "Taurus dödade dig, Måste vara skill issue <br/>")
             slut()
         }
-        else {
-            document.getElementById("meddelande").innerHTML += ("Din sopa välj ett av alternativen <br/>")
+        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+            m_hp = m_hp -
+                spelar_stats.p_str - spelar_stats.vapen.v_str
+            spelar_stats.p_hp = spelar_stats.p_hp -
+                m_str + spelar_stats.vapen.v_hp
         }
     }
 }
@@ -349,7 +341,9 @@ function rum_typ() {
         }
     }
     else {
-        boss_fight()
+        document.getElementById("val_taurus").style.display = "block"
+        document.getElementById("audio").src = "musik/BC OP1.mp3"
+        document.getElementById("body").style.backgroundColor = "maroon"
     }
 
 }
