@@ -7,7 +7,7 @@ let höger = "ArrowRight";
 let up = "ArrowUp";
 let ner = "ArrowDown";
 
-vapen = "";
+nytt_vapen = "";
 
 spelar_stats = "";
 
@@ -59,8 +59,9 @@ function vapengenerator() {
         let Spjut = new Vapen(statgen(0, 0), statgen(2, 3), "ett Spjut")
         let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
         let index = Math.floor(Math.random() * Vlista.length);
-        let vapen = Vlista[index]
-        return (vapen)
+        nytt_vapen = Vlista[index]
+        vapenbild()
+        return(nytt_vapen)
 
     }
     else if (spelar_stats.p_lvl < 20 && spelar_stats.p_lvl >= 10) {
@@ -71,8 +72,10 @@ function vapengenerator() {
         let Spjut = new Vapen(statgen(0, 0), statgen(3, 4), "ett Spjut")
         let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
         let index = Math.floor(Math.random() * Vlista.length);
-        let vapen = Vlista[index]
-        return (vapen)
+        nytt_vapen = Vlista[index]
+        vapenbild()
+        return(nytt_vapen)
+
     }
     else if (spelar_stats.p_lvl < 30 && spelar_stats.p_lvl >= 20) {
         let Svärd = new Vapen(statgen(1, 1), statgen(4, 5), "ett Svärd")
@@ -82,13 +85,33 @@ function vapengenerator() {
         let Spjut = new Vapen(statgen(0, 0), statgen(5, 6), "ett Spjut")
         let Vlista = [Svärd, Sköld, Yxa, Pilbåge, Spjut]
         let index = Math.floor(Math.random() * Vlista.length);
-        let vapen = Vlista[index]
-        return (vapen)
+        nytt_vapen = Vlista[index]
+        vapenbild()
+        return(nytt_vapen)
+
     }
+
 }
 
 
+function vapenbild(){
+    if (nytt_vapen.v_namn == "ett Svärd"){
+        document.getElementById("m_bild").src ="bilder/svärd.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Spjut"){
+        document.getElementById("m_bild").src ="bilder/spjut.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Sköld"){
+        document.getElementById("m_bild").src ="bilder/sköld.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Yxa"){
+        document.getElementById("m_bild").src ="bilder/yxa.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Pilbåge"){
+        document.getElementById("m_bild").src ="bilder/pilbåge.jfif"
+    }
 
+}
 
 
 class Vapen {
@@ -131,15 +154,11 @@ function monstrgenerator() {
         let Goblin = new Monster(statgen(3, 7), statgen(3, 8), "Goblin")
         if (monster == 1) {
             monster_stats = (Slime);
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/slime.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Goblin)
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/goblin.jfif"
             return (monster_stats)
         }
@@ -150,15 +169,11 @@ function monstrgenerator() {
         let Golem = new Monster(statgen(12, 17), statgen(3, 3), "Golem")
         if (monster == 1) {
             monster_stats = (Lycan);
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/lycan.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Golem)
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/golem.jfif"
             return (monster_stats)
         }
@@ -168,15 +183,11 @@ function monstrgenerator() {
         let Orc = new Monster(statgen(9, 15), statgen(6, 10), "Orc")
         if (monster == 1) {
             monster_stats = (Undead);
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/undead.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Orc)
-            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
-            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             document.getElementById("m_bild").src ="bilder/orc.jfif"
             return (monster_stats)
         }
@@ -320,6 +331,9 @@ function rum_typ() {
         let typ = Math.round(Math.random() * 10)
         if ([1, 2, 3, 4, 10].includes(typ)) {
             let monster_stats = monstrgenerator()
+            document.getElementById("m_stat").innerHTML = ("Monster stat")
+            document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
+            document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
             fight(monster_stats)
             if (spelar_stats.p_lvlpoäng == 3) {
                 document.getElementById("lvl_poäng").style.display = "block"
@@ -371,7 +385,10 @@ function fälla() {
 function öppna(){
     document.getElementById("val_kista").style.display = "none"
     vapen = vapengenerator()
-    document.getElementById("vapentext").innerHTML = ("Du finner en "+ vapen.v_namn+ " med hp "+ vapen.v_hp+ " och str "+ vapen.v_str+"<br/> Vad vill du göra?")
+    document.getElementById("m_stat").innerHTML = ("Vapen stat")
+    document.getElementById("m_hälsa").innerHTML = ("Hp: "+ nytt_vapen.v_hp)
+    document.getElementById("m_styrka").innerHTML = ("Str: "+ nytt_vapen.v_str)
+    document.getElementById("vapentext").innerHTML = ("Du finner "+ nytt_vapen.v_namn+ " med hp "+ nytt_vapen.v_hp+ " och str "+ nytt_vapen.v_str+"<br/> Vad vill du göra?")
     document.getElementById("val_vapen").style.display = "block"
     
 }
