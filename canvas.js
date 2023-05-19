@@ -133,12 +133,14 @@ function monstrgenerator() {
             monster_stats = (Slime);
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/slime.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Goblin)
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/goblin.jfif"
             return (monster_stats)
         }
     }
@@ -150,12 +152,14 @@ function monstrgenerator() {
             monster_stats = (Lycan);
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/lycan.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Golem)
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/golem.jfif"
             return (monster_stats)
         }
     }
@@ -166,12 +170,14 @@ function monstrgenerator() {
             monster_stats = (Undead);
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/undead.jfif"
             return (monster_stats);
         }
         else if (monster == 0) {
             monster_stats = (Orc)
             document.getElementById("m_hälsa").innerHTML = ("Hp: "+ monster_stats.m_hp)
             document.getElementById("m_styrka").innerHTML = ("Str: "+monster_stats.m_str)
+            document.getElementById("m_bild").src ="bilder/orc.jfif"
             return (monster_stats)
         }
     }
@@ -284,8 +290,8 @@ function boss_fight() {
         else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
             m_hp = m_hp -
                 spelar_stats.p_str - spelar_stats.vapen.v_str
-            spelar_stats.p_hp = spelar_stats.p_hp -
-                m_str + spelar_stats.vapen.v_hp
+            spelar_stats.p_hp = spelar_stats.p_hp - m_str + spelar_stats.vapen.v_hp
+                console.log("hej")
         }
     }
 }
