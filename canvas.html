@@ -26,8 +26,8 @@
     </div>
     <div id="lvl_poäng" class="val">
       <div class="insttext"> Du har nu fått en lvl uppgradering. <br/> Vad vill du höja?</div>
-      <button class="öppna kistaknapp" onclick="Hp()">Hp</button>
-      <button class="lämna kistaknapp" onclick="Str()">Str</button>
+      <button class="öppna kistaknapp" onclick="lvl_upgr(1)">Hp</button>
+      <button class="lämna kistaknapp" onclick="lvl_upgr(2)">Str</button>
     </div>
     <div id="inst">
       <button class="inställningknapp tillbaka" onclick="inställningar()">
@@ -55,6 +55,7 @@
     </div>
     <div id="avslutning">
       <div class="gameover">Game Over</div>
+      <div class="gameover" id="over"></div>
       <button><a class="start" href="canvas.html">Starta Om</a></button>
     </div>
     <div id="vinst">

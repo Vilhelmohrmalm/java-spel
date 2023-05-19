@@ -196,29 +196,24 @@ let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
 // ---------------------------------------- SLUT  ----------------------------------------
 
-function slut() {
-    document.getElementById("avslutning").style.display = "block"
-    
-    
-}
+
 // ---------------------------------------- SLUT  ----------------------------------------
 
 // ---------------------------------------- lvl poäng  ----------------------------------------
 
-function Hp(){
+function lvl_upgr(n){
+  
+  if (n==1){
     spelar_stats.p_hp += 1
     spelar_stats.p_lvlpoäng = 0
-    document.getElementById("lvl_poäng").style.display = "none"
-}
-
-function Str(){
+  }
+  else if(n==2){
     spelar_stats.p_str += 1
     spelar_stats.p_lvlpoäng = 0
-    document.getElementById("lvl_poäng").style.display = "none"
+  }
+  document.getElementById("lvl_poäng").style.display = "none"
+  return
 }
-
-
-
 
 // ---------------------------------------- lvl poäng  ----------------------------------------
 
@@ -253,12 +248,11 @@ function fight(monster_stats) {
             return
 
         }
-        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("meddelande").innerHTML += ("Du dog <br/>")
-            document.getElementById("meddelande").innerHTML += ("Du nådde lvl " + spelar_stats.p_lvl + " Måste vara skill issue <br/>")
-            slut()
+        else if ( monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+            document.getElementById("over").innerHTML += (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+            document.getElementById("avslutning").style.display = "block"
         }
-        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < monster_stats.m_hp && monster_stats.m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+        else {
             monster_stats.m_hp = monster_stats.m_hp - spelar_stats.p_str - spelar_stats.vapen.v_str
             spelar_stats.p_hp = spelar_stats.p_hp - monster_stats.m_str + spelar_stats.vapen.v_hp
         }
@@ -267,8 +261,9 @@ function fight(monster_stats) {
 }
 
 function ge_upp(){
+    document.getElementById("over").innerHTML = (" Du gav upp <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
     document.getElementById("val_taurus").style.display = "none"
-    slut()
+    document.getElementById("avslutning").style.display = "block"
 }
 
 function boss_fight() {
@@ -282,12 +277,11 @@ function boss_fight() {
         if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
             document.getElementById("vinst").style.display = "block"
         }
-        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("meddelande").innerHTML += (
-                "Taurus dödade dig, Måste vara skill issue <br/>")
-            slut()
+        else if ( m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+            document.getElementById("over").innerHTML = (" Du blir dödat av Taurus <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+            document.getElementById("avslutning").style.display = "block"
         }
-        else if (spelar_stats.p_str + spelar_stats.vapen.v_str < m_hp && m_str < spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+        else  {
             m_hp = m_hp -
                 spelar_stats.p_str - spelar_stats.vapen.v_str
             spelar_stats.p_hp = spelar_stats.p_hp - m_str + spelar_stats.vapen.v_hp
@@ -362,10 +356,9 @@ function fälla() {
 
     }
     else {
-        document.getElementById("meddelande").innerHTML += ("där du dör i en fälla <br/>")
-        document.getElementById("meddelande").innerHTML += ("Du nådde lvl " + spelar_stats.p_lvl + "<br/>")
-        document.getElementById("meddelande").innerHTML += (" Måste vara skill issue <br/>")
-        slut()
+
+        document.getElementById("over").innerHTML = (" Du dör i en fälla <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue ")
+        document.getElementById("avslutning").style.display = "block"
     }
 }
 
