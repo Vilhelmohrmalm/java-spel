@@ -232,16 +232,14 @@ function lvl_upgr(n){
 
 function fight(monster_stats) {
 
-    document.getElementById("meddelande").innerHTML +=
-        ("och du stöter på en " + monster_stats.m_namn + " med " + monster_stats.m_hp + " hp och " + monster_stats.m_str + " str <br/>")
+    document.getElementById("meddelande").innerHTML =
+        ( "Du stöter på en " + monster_stats.m_namn + "<br/>med " + monster_stats.m_hp + " hp och " + monster_stats.m_str + " str <br/>")
 
     while (monster_stats.m_hp > 0) {
 
         if (spelar_stats.p_str + spelar_stats.vapen.v_str >= monster_stats.m_hp) {
-            document.getElementById("meddelande").innerHTML += ("Du besegrade monstret <br/>")
-            document.getElementById("meddelande").innerHTML += ("Du har " + spelar_stats.p_hp + " hp kvar <br/>")
             spelar_stats.p_lvl += 1
-            document.getElementById("meddelande").innerHTML += ("Du är är nu lvl " + spelar_stats.p_lvl + "<br/>")
+            document.getElementById("meddelande").innerHTML += ("Du besegrade monstret <br/>Du har " + spelar_stats.p_hp + " hp kvar <br/> Du är är nu lvl " + spelar_stats.p_lvl + "<br/")
             spelar_stats.p_lvlpoäng += 1
             if (spelar_stats.p_lvl == 10) {
                 spelar_stats.p_hp += 3
@@ -260,7 +258,7 @@ function fight(monster_stats) {
 
         }
         else if ( monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("over").innerHTML += (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+            document.getElementById("over").innerHTML = (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
             document.getElementById("avslutning").style.display = "block"
         }
         else {
@@ -307,14 +305,30 @@ function boss_fight() {
 // ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
 
 function byt_ut(){
-    document.getElementById("meddelande").innerHTML += ("Du har nu ett nytt vapen i din ryggsäck <br/>")
+    document.getElementById("meddelande").innerHTML = ("Du har nu ett nytt vapen i din ryggsäck <br/>")
     spelar_stats.vapen = vapen
     document.getElementById("val_vapen").style.display = "none"
+    if (nytt_vapen.v_namn == "ett Svärd"){
+        document.getElementById("v_bild").src ="bilder/svärd.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Spjut"){
+        document.getElementById("v_bild").src ="bilder/spjut.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Sköld"){
+        document.getElementById("v_bild").src ="bilder/sköld.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Yxa"){
+        document.getElementById("v_bild").src ="bilder/yxa.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Pilbåge"){
+        document.getElementById("v_bild").src ="bilder/pilbåge.jfif"
+    }
+
 }
 
 function lämna_vapen(){
     document.getElementById("val_vapen").style.display = "none"
-    document.getElementById("meddelande").innerHTML += (
+    document.getElementById("meddelande").innerHTML = (
         "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
 }
 
@@ -341,7 +355,7 @@ function rum_typ() {
 
         }
         else if ([5, 6].includes(typ)) {
-            document.getElementById("meddelande").innerHTML += ("och kommer till ett tomt rum <br/>")
+            document.getElementById("meddelande").innerHTML = ("Du kommer till ett tomt rum <br/>")
 
         }
         else if ([7, 8].includes(typ)) {
@@ -365,8 +379,8 @@ function rum_typ() {
 function fälla() {
     if (spelar_stats.p_hp > 1) {
         spelar_stats.p_hp -= 1
-        document.getElementById("meddelande").innerHTML += (
-            "där du klev i en fälla, du har nu " + spelar_stats.p_hp + " hp kvar <br/>")
+        document.getElementById("meddelande").innerHTML = (
+            "Du klev i en fälla, du har nu " + spelar_stats.p_hp + " hp kvar <br/>")
 
     }
     else {
@@ -385,7 +399,7 @@ function fälla() {
 function öppna(){
     document.getElementById("val_kista").style.display = "none"
     vapen = vapengenerator()
-    document.getElementById("m_stat").innerHTML = ("Vapen stat")
+    document.getElementById("m_stat").innerHTML = ("Nytt Vapen stat")
     document.getElementById("m_hälsa").innerHTML = ("Hp: "+ nytt_vapen.v_hp)
     document.getElementById("m_styrka").innerHTML = ("Str: "+ nytt_vapen.v_str)
     document.getElementById("vapentext").innerHTML = ("Du finner "+ nytt_vapen.v_namn+ " med hp "+ nytt_vapen.v_hp+ " och str "+ nytt_vapen.v_str+"<br/> Vad vill du göra?")
@@ -395,8 +409,8 @@ function öppna(){
 
 function lämna(){
     document.getElementById("val_kista").style.display = "none"
-    document.getElementById("meddelande").innerHTML += ("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den. <br/>")
-    document.getElementById("meddelande").innerHTML += ("Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
+    document.getElementById("meddelande").innerHTML += ("du lämnar kistan där för att rutna, utan att någonsinn få veta vad som finns i den. <br/> Kistans inehåll kommer att förbli ett mysterium för alltid. <br/>")
+
 }
 
 

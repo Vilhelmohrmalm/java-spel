@@ -32,8 +32,9 @@ body {
   font-size: 5vw;
 }
 
-h3 {
+.rubrik {
   width: 100%;
+  margin-top: 1.3vw;
 }
 
 .inställning {
@@ -48,7 +49,8 @@ h3 {
   background-color: white;
   border: none;
   margin-left: 22vw;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
+  width: 3vw;
 }
 
 .tillbaka {
@@ -104,7 +106,7 @@ h3 {
 .instknapp {
   color: black;
   margin-left: 47vw;
-  margin-top: 2vw;
+  margin-top: 1vw;
 }
 
 .totstat {
@@ -112,14 +114,14 @@ h3 {
 }
 
 .avatar {
-  height: 100px;
+  height: 80px;
   border-bottom-right-radius: 12px;
   border: 3px solid rgb(42, 33, 33);
 }
 
 .statbox {
-  height: 100px;
-  width: calc(100% - 106px);
+  height: 80px;
+  width: 234px;
   background-color: aquamarine;
   font-size: 12px;
   display: flex;
@@ -158,6 +160,7 @@ canvas {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
+  top: 0;
 }
 
 #startsida {
@@ -245,7 +248,6 @@ canvas {
 }
 
 #meddelande {
-  overflow: scroll;
   width: 25vw;
   font-size: 1vw;
   height: 10vw;

@@ -97,10 +97,9 @@
     </div>
     <canvas id="gameCanvas"></canvas>
     <div class="menu">
-      
-      <div class="statmenu">
-        <button class="inställningknapp" onclick="inställningar()"><img src="bilder/inställningsknapp.png" class="inställning"></button>
-        <h3>Dina Stats</h3>
+      <button class="inställningknapp" onclick="inställningar()"><img src="bilder/inställningsknapp.png" class="inställning"></button>
+      <div class="statmenu"></div>
+        <h3 class="rubrik">Dina Stats</h3>
         <div class="totstat">
         <img class="avatar" id="p_bild" src= />
         <div class="statbox text">
@@ -108,18 +107,24 @@
           <div class="stat" id="lvl-p"></div>
           <div class="stat" id="styrka"></div>
           <div class="stat" id="hälsa"></div>
-          <div class="stat" id="vapen-s"></div>
-          <div class="stat" id="vapen-h"></div>
-          <div class="stat" id="vapen-typ"></div>
         </div>
         </div>
-        <h4 id="m_stat">Monster Stats</h4>
+        <h3 class="rubrik">Ditt vapens stat</h3>
         <div class="totstat">
-        <img class="avatar" id="m_bild"  src= "bilder/fråga.png" />
-        <div class="statbox text">
-          <div class="stat" id="m_styrka"></div>
-          <div class="stat" id="m_hälsa"></div>
+          <img class="avatar" id="v_bild"  src= "bilder/pinne.jpg" />
+          <div class="statbox text">
+            <div class="stat" id="vapen-s"></div>
+            <div class="stat" id="vapen-h"></div>
+            <div class="stat" id="vapen-typ"></div>
+          </div>
         </div>
+        <h3 class="rubrik" id="m_stat">Rum Stats</h4>
+        <div class="totstat">
+          <img class="avatar" id="m_bild"  src= "bilder/fråga.png" />
+          <div class="statbox text">
+            <div class="stat" id="m_styrka"></div>
+            <div class="stat" id="m_hälsa"></div>
+          </div>
         </div>
         <p id="meddelande"></p>
       </div>
