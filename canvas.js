@@ -107,7 +107,7 @@ function vapenbild(){
     else if(nytt_vapen.v_namn == "en Yxa"){
         document.getElementById("m_bild").src ="bilder/yxa.jfif"
     }
-    else if(nytt_vapen.v_namn == "ett Pilbåge"){
+    else if(nytt_vapen.v_namn == "en Pilbåge"){
         document.getElementById("m_bild").src ="bilder/pilbåge.jfif"
     }
 
@@ -197,7 +197,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(500, 100, 29, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
@@ -371,7 +371,7 @@ function byt_ut(){
     else if(nytt_vapen.v_namn == "en Yxa"){
         document.getElementById("v_bild").src ="bilder/yxa.jfif"
     }
-    else if(nytt_vapen.v_namn == "ett Pilbåge"){
+    else if(nytt_vapen.v_namn == "en Pilbåge"){
         document.getElementById("v_bild").src ="bilder/pilbåge.jfif"
     }
 
