@@ -197,7 +197,7 @@ function monstrgenerator() {
 
 let Start = new Vapen(0, 0, "en pinne")
 
-let Assasin = new Karaktärer(5, 10, 0, 0, "assasin", Start, "black")
+let Assasin = new Karaktärer(500, 100, 29, 0, "assasin", Start, "black")
 let Barb = new Karaktärer(8, 7, 0, 0, "Barb", Start, "orange")
 let Knight = new Karaktärer(10, 5, 0, 0, "Knight", Start, "silver")
 
@@ -259,7 +259,7 @@ function fight(monster_stats) {
         }
         else if (  spelar_stats.p_hp + spelar_stats.vapen.v_hp <= monster_stats.m_str) {
             document.getElementById("over").innerHTML = (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
-            document.getElementById("avslutning").style.display = "block"
+            document.getElementById("förlust").style.display = "block"
             return
         }
         else {
@@ -270,72 +270,11 @@ function fight(monster_stats) {
     }
 }
 
-function ge_upp(){
-    document.getElementById("over").innerHTML = (" Du gav upp <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
-    document.getElementById("val_taurus").style.display = "none"
-    document.getElementById("avslutning").style.display = "block"
-}
-
-function boss_fight() {
-
-    document.getElementById("val_taurus").style.display = "none"
-    let m_hp = 30
-    let m_str = 10
-
-   
-    while (m_hp > 0) {
-        if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
-            document.getElementById("vinst").style.display = "block"
-            return
-        }
-        else if ( m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("over").innerHTML = (" Du blir dödat av Taurus <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
-            document.getElementById("avslutning").style.display = "block"
-            return
-        }
-        else  {
-            m_hp = m_hp -
-                spelar_stats.p_str - spelar_stats.vapen.v_str
-            spelar_stats.p_hp = spelar_stats.p_hp - m_str + spelar_stats.vapen.v_hp
-                
-        }
-    }
-}
 
 
 // ---------------------------------------- FIGHT ----------------------------------------
 
-// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
-
-function byt_ut(){
-    document.getElementById("meddelande").innerHTML = ("Du har nu ett nytt vapen i din ryggsäck <br/>")
-    spelar_stats.vapen = vapen
-    document.getElementById("val_vapen").style.display = "none"
-    if (nytt_vapen.v_namn == "ett Svärd"){
-        document.getElementById("v_bild").src ="bilder/svärd.jfif"
-    }
-    else if(nytt_vapen.v_namn == "ett Spjut"){
-        document.getElementById("v_bild").src ="bilder/spjut.jfif"
-    }
-    else if(nytt_vapen.v_namn == "en Sköld"){
-        document.getElementById("v_bild").src ="bilder/sköld.jfif"
-    }
-    else if(nytt_vapen.v_namn == "en Yxa"){
-        document.getElementById("v_bild").src ="bilder/yxa.jfif"
-    }
-    else if(nytt_vapen.v_namn == "ett Pilbåge"){
-        document.getElementById("v_bild").src ="bilder/pilbåge.jfif"
-    }
-
-}
-
-function lämna_vapen(){
-    document.getElementById("val_vapen").style.display = "none"
-    document.getElementById("meddelande").innerHTML = (
-        "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
-}
-
-
+// ---------------------------------------- RUM TYP ----------------------------------------
 
 
 
@@ -389,7 +328,7 @@ function fälla() {
     else {
 
         document.getElementById("over").innerHTML = (" Du dör i en fälla <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue ")
-        document.getElementById("avslutning").style.display = "block"
+        document.getElementById("förlust").style.display = "block"
     }
 }
 
@@ -416,7 +355,65 @@ function lämna(){
 
 }
 
+function byt_ut(){
+    document.getElementById("meddelande").innerHTML = ("Du har nu ett nytt vapen i din ryggsäck <br/>")
+    spelar_stats.vapen = vapen
+    document.getElementById("val_vapen").style.display = "none"
+    if (nytt_vapen.v_namn == "ett Svärd"){
+        document.getElementById("v_bild").src ="bilder/svärd.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Spjut"){
+        document.getElementById("v_bild").src ="bilder/spjut.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Sköld"){
+        document.getElementById("v_bild").src ="bilder/sköld.jfif"
+    }
+    else if(nytt_vapen.v_namn == "en Yxa"){
+        document.getElementById("v_bild").src ="bilder/yxa.jfif"
+    }
+    else if(nytt_vapen.v_namn == "ett Pilbåge"){
+        document.getElementById("v_bild").src ="bilder/pilbåge.jfif"
+    }
 
+}
+
+function lämna_vapen(){
+    document.getElementById("val_vapen").style.display = "none"
+    document.getElementById("meddelande").innerHTML = (
+        "Du lämnade det nya fräsha vapnet i kistan för du kan inte överge ditt gamla vapen efter allt ni gjort tilsammans <br/>")
+}
+
+function ge_upp(){
+    document.getElementById("over").innerHTML = (" Du gav upp <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
+    document.getElementById("val_taurus").style.display = "none"
+    document.getElementById("förlust").style.display = "block"
+}
+
+function boss_fight() {
+
+    document.getElementById("val_taurus").style.display = "none"
+    let m_hp = 30
+    let m_str = 10
+
+   
+    while (m_hp > 0) {
+        if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
+            document.getElementById("vinst").style.display = "block"
+            return
+        }
+        else if ( m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
+            document.getElementById("over").innerHTML = (" Du blir dödat av Taurus <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
+            document.getElementById("förlust").style.display = "block"
+            return
+        }
+        else  {
+            m_hp = m_hp -
+                spelar_stats.p_str - spelar_stats.vapen.v_str
+            spelar_stats.p_hp = spelar_stats.p_hp - m_str + spelar_stats.vapen.v_hp
+                
+        }
+    }
+}
 
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
