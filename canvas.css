@@ -100,25 +100,20 @@ body {
 
 /* slut */
 #avslutning {
-  background-color: black;
-  height: 100vw;
-  width: 100vw;
-  position: absolute;
-  align-items: center;
   display: none;
-  top: 0;
-  left: 0;
-  text-align: center;
 }
 
 #vinst {
+  display: none;
+}
+
+.slut {
   background-color: black;
   text-align: center;
   height: 100vw;
   width: 100vw;
   position: absolute;
   align-items: center;
-  display: none;
   top: 0;
   left: 0;
 }
