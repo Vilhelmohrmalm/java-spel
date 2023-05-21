@@ -257,9 +257,10 @@ function fight(monster_stats) {
             return
 
         }
-        else if ( monster_stats.m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("over").innerHTML = (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+        else if (  spelar_stats.p_hp + spelar_stats.vapen.v_hp <= monster_stats.m_str) {
+            document.getElementById("over").innerHTML = (" Du blev dödat av en "+ monster_stats.m_namn+"<br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
             document.getElementById("avslutning").style.display = "block"
+            return
         }
         else {
             monster_stats.m_hp = monster_stats.m_hp - spelar_stats.p_str - spelar_stats.vapen.v_str
@@ -270,7 +271,7 @@ function fight(monster_stats) {
 }
 
 function ge_upp(){
-    document.getElementById("over").innerHTML = (" Du gav upp <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+    document.getElementById("over").innerHTML = (" Du gav upp <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
     document.getElementById("val_taurus").style.display = "none"
     document.getElementById("avslutning").style.display = "block"
 }
@@ -285,16 +286,18 @@ function boss_fight() {
     while (m_hp > 0) {
         if (spelar_stats.p_str + spelar_stats.vapen.v_str >= m_hp) {
             document.getElementById("vinst").style.display = "block"
+            return
         }
         else if ( m_str >= spelar_stats.p_hp + spelar_stats.vapen.v_hp) {
-            document.getElementById("over").innerHTML = (" Du blir dödat av Taurus <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> Måste vara skill issue <br/>")
+            document.getElementById("over").innerHTML = (" Du blir dödat av Taurus <br/> Du nådde lvl " + spelar_stats.p_lvl + "<br/> Måste vara skill issue <br/> ")
             document.getElementById("avslutning").style.display = "block"
+            return
         }
         else  {
             m_hp = m_hp -
                 spelar_stats.p_str - spelar_stats.vapen.v_str
             spelar_stats.p_hp = spelar_stats.p_hp - m_str + spelar_stats.vapen.v_hp
-                console.log("hej")
+                
         }
     }
 }
