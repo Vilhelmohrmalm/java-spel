@@ -5,6 +5,100 @@ body {
   display: flex;
 }
 
+/* val id */
+#val_kista {
+  display: none;
+}
+
+#val_taurus {
+  display: none;
+}
+
+#val_vapen {
+  display: none;
+}
+
+#lvl_poäng {
+  display: none;
+}
+/* val id */
+
+/* val klasser */
+.val {
+  position: absolute;
+  align-self: center;
+  margin-left: 27vw;
+  width: 20vw;
+  height: 15vw;
+  background-color: black;
+  border: solid white;
+  color: white;
+}
+
+/* val klasser */
+
+/* valknapp */
+.kistaknapp {
+  font-size: 1.5vw;
+}
+
+.öppna {
+  margin-left: 2.5vw;
+}
+
+.lämna {
+  margin-left: 2vw;
+}
+/* valknapp */
+
+/* text */
+.insttext {
+  color: white;
+  text-align: center;
+  margin: 1vw;
+}
+/* text */
+
+/* inställning */
+#inst {
+  width: 100vw;
+  height: 100vw;
+  background-color: black;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.inställning {
+  width: 2vw;
+}
+
+.inställning2 {
+  width: 4vw;
+}
+
+.inställningknapp {
+  background-color: white;
+  border: none;
+  margin-left: 22vw;
+  margin-top: 0.5vw;
+  width: 3vw;
+}
+
+.tillbaka {
+  background-color: black;
+  margin-left: 90vw;
+}
+
+.instknapp {
+  color: black;
+  margin-left: 47vw;
+  margin-top: 1vw;
+}
+/* inställning */
+
+/* slut */
 #avslutning {
   background-color: black;
   height: 100vw;
@@ -34,81 +128,105 @@ body {
   font-size: 5vw;
 }
 
-.rubrik {
-  width: 100%;
-  margin-top: 1.3vw;
-}
+/* slut */
 
-.inställning {
-  width: 2vw;
-}
-
-.inställning2 {
-  width: 4vw;
-}
-
-.inställningknapp {
-  background-color: white;
-  border: none;
-  margin-left: 22vw;
-  margin-top: 0.5vw;
-  width: 3vw;
-}
-
-.tillbaka {
-  background-color: black;
-  margin-left: 90vw;
-}
-
-.insttext {
+.start {
+  font-size: 5vw;
   color: white;
+  background-color: black;
+  border: solid white;
+  margin-top: 5vw;
+}
+
+/* startsidor */
+#startsida {
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  width: 100vw;
+  height: 100vw;
   text-align: center;
+}
+
+.förklaring {
+  font-size: 5vw;
+  color: white;
+}
+#karaktärsval {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+}
+
+.förklaring2 {
+  color: white;
+  font-size: 5vw;
+}
+
+.karaktärer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.karaktär {
+  border: solid white;
   margin: 1vw;
 }
 
-#val_kista {
-  display: none;
+.bild {
+  width: 29vw;
+  height: auto;
 }
 
-#val_taurus {
-  display: none;
+.stat {
+  width: 40%;
 }
 
-#val_vapen {
-  display: none;
-}
-
-#lvl_poäng {
-  display: none;
-}
-
-.val {
-  position: absolute;
-  align-self: center;
-  margin-left: 27vw;
-  width: 20vw;
-  height: 15vw;
+.välj {
+  color: white;
   background-color: black;
   border: solid white;
-  color: white;
-}
-
-.kistaknapp {
+  margin-left: 1vw;
   font-size: 1.5vw;
 }
+/* startsidor */
 
-.öppna {
-  margin-left: 2.5vw;
+/* canvas */
+canvas {
+  border: 2px solid black;
+  background-image: url(bilder/pixil-frame-1.png);
+  background-size: cover;
+  height: 43.5vw;
+  width: 75vw;
+  margin-right: 0.5vw;
+}
+/* canvas */
+
+/* menu */
+
+.menu {
+  width: 25vw;
+  height: 43vw;
+  border: 5px solid rgb(99, 63, 63);
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
-.lämna {
-  margin-left: 2vw;
+.statmenu {
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  top: 0;
 }
 
-.instknapp {
-  color: black;
-  margin-left: 47vw;
-  margin-top: 1vw;
+.rubrik {
+  width: 100%;
+  margin-top: 1.3vw;
 }
 
 .totstat {
@@ -134,111 +252,21 @@ body {
   /* font-family: "Press Start 2P", cursive; */
 }
 
-.stat {
-  width: 40%;
-}
-
-canvas {
-  border: 2px solid black;
-  background-image: url(bilder/pixil-frame-1.png);
-  background-size: cover;
-  height: 43.5vw;
-  width: 75vw;
-  margin-right: 0.5vw;
-}
-
-.menu {
-  width: 25vw;
-  height: 43vw;
-  border: 5px solid rgb(99, 63, 63);
-  background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.statmenu {
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
-  top: 0;
-}
-
-#startsida {
-  position: absolute;
-  background-color: rgb(0, 0, 0);
-  width: 100vw;
-  height: 100vw;
-  text-align: center;
-}
-
-.förklaring {
-  font-size: 5vw;
-  color: white;
-}
-
-.start {
-  font-size: 5vw;
-  color: white;
-  background-color: black;
-  border: solid white;
-  margin-top: 5vw;
-}
-
-#karaktärsval {
-  display: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: black;
-}
-
-.förklaring2 {
-  color: white;
-  font-size: 5vw;
-}
-
-.karaktärer {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.assasin {
-  border: solid white;
-  margin: 1vw;
-}
-
-.knight {
-  border: solid white;
-  margin: 1vw;
-}
-
-.barb {
-  border: solid white;
-  margin: 1vw;
-}
-
-.bild {
-  width: 29vw;
-  height: auto;
-}
-
 .stats {
   color: white;
   font-size: 2vw;
   margin-left: 1vw;
 }
 
-.välj {
-  color: white;
-  background-color: black;
-  border: solid white;
-  margin-left: 1vw;
-  font-size: 1.5vw;
+#meddelande {
+  width: 25vw;
+  font-size: 1vw;
+  height: 10vw;
+  top: 33vw;
 }
+/* menu */
 
+/* hover */
 .välj:hover {
   scale: 1.1;
   transition: 0.5s;
@@ -249,24 +277,8 @@ canvas {
   transition: 0.5s;
 }
 
-#meddelande {
-  width: 25vw;
-  font-size: 1vw;
-  height: 10vw;
-  top: 33vw;
-}
-
 .inställningknapp:hover {
   scale: 1.1;
   transition: 2s;
 }
-
-#inst {
-  width: 100vw;
-  height: 100vw;
-  background-color: black;
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-}
+/* hover */
