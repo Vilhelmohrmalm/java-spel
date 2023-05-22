@@ -313,6 +313,11 @@ function rum_typ() {
         document.getElementById("val_taurus").style.display = "block"
         document.getElementById("audio").src = "musik/BC OP1.mp3"
         document.getElementById("body").style.backgroundColor = "maroon"
+        document.getElementById("m_bild").src = "bilder/taurus.jfif"
+        document.getElementById("m_stat").innerHTML = ("Taurus stat")
+        document.getElementById("m_hälsa").innerHTML = ("Hp: 30")
+        document.getElementById("m_styrka").innerHTML = ("Str: 10")
+
     }
 
 }
@@ -332,7 +337,7 @@ function fälla() {
     }
 }
 
-// ---------------------------------------- RUM TYP OCH KISTA ----------------------------------------
+// ---------------------------------------- RUM TYP ----------------------------------------
 
 // ---------------------------------------- VALFUNKTIONER ----------------------------------------
 
@@ -344,7 +349,7 @@ function öppna(){
     document.getElementById("m_stat").innerHTML = ("Nytt Vapen stat")
     document.getElementById("m_hälsa").innerHTML = ("Hp: "+ nytt_vapen.v_hp)
     document.getElementById("m_styrka").innerHTML = ("Str: "+ nytt_vapen.v_str)
-    document.getElementById("vapentext").innerHTML = ("Du finner "+ nytt_vapen.v_namn+ " med hp "+ nytt_vapen.v_hp+ " och str "+ nytt_vapen.v_str+"<br/> Vad vill du göra?")
+    document.getElementById("vapentext").innerHTML = ("Du finner "+ nytt_vapen.v_namn+ " med <br/> Str "+ nytt_vapen.v_str+ " och Hp "+ nytt_vapen.v_hp+"<br/> Vad vill du göra?")
     document.getElementById("val_vapen").style.display = "block"
     
 }
